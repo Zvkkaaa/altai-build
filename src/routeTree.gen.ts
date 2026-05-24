@@ -13,6 +13,7 @@ import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as LangRouteImport } from './routes/$lang'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as LangIndexRouteImport } from './routes/$lang.index'
+import { Route as LangSocialDutyRouteImport } from './routes/$lang.social-duty'
 import { Route as LangServicesRouteImport } from './routes/$lang.services'
 import { Route as LangProjectsRouteImport } from './routes/$lang.projects'
 import { Route as LangNewsRouteImport } from './routes/$lang.news'
@@ -38,6 +39,11 @@ const IndexRoute = IndexRouteImport.update({
 const LangIndexRoute = LangIndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => LangRoute,
+} as any)
+const LangSocialDutyRoute = LangSocialDutyRouteImport.update({
+  id: '/social-duty',
+  path: '/social-duty',
   getParentRoute: () => LangRoute,
 } as any)
 const LangServicesRoute = LangServicesRouteImport.update({
@@ -81,6 +87,7 @@ export interface FileRoutesByFullPath {
   '/$lang/news': typeof LangNewsRoute
   '/$lang/projects': typeof LangProjectsRoute
   '/$lang/services': typeof LangServicesRoute
+  '/$lang/social-duty': typeof LangSocialDutyRoute
   '/$lang/': typeof LangIndexRoute
 }
 export interface FileRoutesByTo {
@@ -92,6 +99,7 @@ export interface FileRoutesByTo {
   '/$lang/news': typeof LangNewsRoute
   '/$lang/projects': typeof LangProjectsRoute
   '/$lang/services': typeof LangServicesRoute
+  '/$lang/social-duty': typeof LangSocialDutyRoute
   '/$lang': typeof LangIndexRoute
 }
 export interface FileRoutesById {
@@ -105,6 +113,7 @@ export interface FileRoutesById {
   '/$lang/news': typeof LangNewsRoute
   '/$lang/projects': typeof LangProjectsRoute
   '/$lang/services': typeof LangServicesRoute
+  '/$lang/social-duty': typeof LangSocialDutyRoute
   '/$lang/': typeof LangIndexRoute
 }
 export interface FileRouteTypes {
@@ -119,6 +128,7 @@ export interface FileRouteTypes {
     | '/$lang/news'
     | '/$lang/projects'
     | '/$lang/services'
+    | '/$lang/social-duty'
     | '/$lang/'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -130,6 +140,7 @@ export interface FileRouteTypes {
     | '/$lang/news'
     | '/$lang/projects'
     | '/$lang/services'
+    | '/$lang/social-duty'
     | '/$lang'
   id:
     | '__root__'
@@ -142,6 +153,7 @@ export interface FileRouteTypes {
     | '/$lang/news'
     | '/$lang/projects'
     | '/$lang/services'
+    | '/$lang/social-duty'
     | '/$lang/'
   fileRoutesById: FileRoutesById
 }
@@ -179,6 +191,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/$lang/'
       preLoaderRoute: typeof LangIndexRouteImport
+      parentRoute: typeof LangRoute
+    }
+    '/$lang/social-duty': {
+      id: '/$lang/social-duty'
+      path: '/social-duty'
+      fullPath: '/$lang/social-duty'
+      preLoaderRoute: typeof LangSocialDutyRouteImport
       parentRoute: typeof LangRoute
     }
     '/$lang/services': {
@@ -233,6 +252,7 @@ interface LangRouteChildren {
   LangNewsRoute: typeof LangNewsRoute
   LangProjectsRoute: typeof LangProjectsRoute
   LangServicesRoute: typeof LangServicesRoute
+  LangSocialDutyRoute: typeof LangSocialDutyRoute
   LangIndexRoute: typeof LangIndexRoute
 }
 
@@ -243,6 +263,7 @@ const LangRouteChildren: LangRouteChildren = {
   LangNewsRoute: LangNewsRoute,
   LangProjectsRoute: LangProjectsRoute,
   LangServicesRoute: LangServicesRoute,
+  LangSocialDutyRoute: LangSocialDutyRoute,
   LangIndexRoute: LangIndexRoute,
 }
 
@@ -256,3 +277,13 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}

@@ -137,18 +137,20 @@ function HomePage() {
                 delay={i * 0.05}
                 className="border-b border-r border-hairline p-8 md:p-10 bg-background hover:bg-surface transition-colors group"
               >
-                <p className="text-xs text-muted-foreground tabular-nums">
-                  0{i + 1}
-                </p>
-                <h3 className="mt-6 text-xl md:text-2xl font-medium tracking-tight">
-                  {s.title[l]}
-                </h3>
-                <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
-                  {s.summary[l]}
-                </p>
-                <span className="mt-8 inline-flex items-center text-xs text-foreground group-hover:gap-2 gap-1 transition-all">
-                  {tr.cta.readMore} →
-                </span>
+                <Link to="/$lang/services" params={{ lang: l }} className="block h-full">
+                  <p className="text-xs text-muted-foreground tabular-nums">
+                    0{i + 1}
+                  </p>
+                  <h3 className="mt-6 text-xl md:text-2xl font-medium tracking-tight">
+                    {s.title[l]}
+                  </h3>
+                  <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
+                    {s.summary[l]}
+                  </p>
+                  <span className="mt-8 inline-flex items-center text-xs text-foreground group-hover:gap-2 gap-1 transition-all">
+                    {tr.cta.readMore} →
+                  </span>
+                </Link>
               </Reveal>
             ))}
           </div>
@@ -167,7 +169,7 @@ function HomePage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10">
             {featured.map((p, i) => (
               <Reveal key={p.slug} delay={i * 0.08}>
-                <div className="group">
+                <Link to="/$lang/projects" params={{ lang: l }} className="group block">
                   <div className="aspect-[4/3] overflow-hidden bg-muted">
                     <img
                       src={p.image}
@@ -187,7 +189,7 @@ function HomePage() {
                     </div>
                     <ArrowUpRight size={20} className="shrink-0 mt-1 text-muted-foreground group-hover:text-foreground" />
                   </div>
-                </div>
+                </Link>
               </Reveal>
             ))}
           </div>
@@ -232,13 +234,13 @@ function HomePage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {latest.map((n, i) => (
               <Reveal key={n.slug} delay={i * 0.08}>
-                <article className="group">
+                <Link to="/$lang/news" params={{ lang: l }} className="group block">
                   <div className="aspect-[4/3] overflow-hidden bg-muted">
                     <img src={n.image} alt={n.title[l]} loading="lazy" className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
                   </div>
                   <p className="eyebrow text-muted-foreground mt-5">{n.category[l]} · {new Date(n.date).toLocaleDateString(l === "mn" ? "mn-MN" : "en-US", { year: "numeric", month: "short", day: "numeric" })}</p>
                   <h3 className="mt-3 text-xl font-medium tracking-tight">{n.title[l]}</h3>
-                </article>
+                </Link>
               </Reveal>
             ))}
           </div>

@@ -38,6 +38,7 @@ export function Footer() {
                 ["/services", tr.nav.services],
                 ["/projects", tr.nav.projects],
                 ["/news", tr.nav.news],
+                ["/social-duty", tr.nav.socialDuty],
                 ["/careers", tr.nav.careers],
                 ["/contact", tr.nav.contact],
               ].map(([href, label]) => (
