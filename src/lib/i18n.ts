@@ -1,0 +1,208 @@
+export type Locale = "mn" | "en";
+export const LOCALES: Locale[] = ["mn", "en"];
+export const DEFAULT_LOCALE: Locale = "mn";
+
+export function isLocale(value: string): value is Locale {
+  return value === "mn" || value === "en";
+}
+
+export const dict = {
+  mn: {
+    brand: "ALTAN CONSTRUCT",
+    brandTagline: "Барилгын корпораци",
+    nav: {
+      home: "Нүүр",
+      about: "Бидний тухай",
+      services: "Үйлчилгээ",
+      projects: "Төслүүд",
+      news: "Мэдээ",
+      careers: "Ажлын байр",
+      contact: "Холбоо барих",
+    },
+    cta: {
+      viewProjects: "Төслүүд үзэх",
+      contactUs: "Холбоо барих",
+      readMore: "Дэлгэрэнгүй",
+      getInTouch: "Хамтран ажиллах",
+      apply: "Өргөдөл гаргах",
+      send: "Илгээх",
+      all: "Бүгд",
+    },
+    home: {
+      heroEyebrow: "Барилга • Инженерчлэл • Дэд бүтэц",
+      heroTitle: "Үндэсний дэд бүтцийг бид босгож байна.",
+      heroSub: "1998 оноос хойш Монгол улсын хамгийн том дэд бүтэц, орон сууц, төрийн барилгуудыг гүйцэтгэсэн корпораци.",
+      introEyebrow: "Танилцуулга",
+      introTitle: "Цаг хугацаа, чанарын стандартыг хэвээр.",
+      introBody: "Бид 25 гаруй жилийн туршлагатай, олон улсын ISO 9001, ISO 14001, ISO 45001 стандартаар баталгаажсан үндэсний хэмжээний барилгын корпораци. Манай 1,200 гаруй ажилтан Улаанбаатар болон 21 аймагт төсөл хэрэгжүүлж байна.",
+      services: "Үйлчилгээний чиглэлүүд",
+      featured: "Онцлох төслүүд",
+      stats: "Тоон үзүүлэлт",
+      gallery: "Барилгын гэрэл зураг",
+      latestNews: "Сүүлийн үеийн мэдээ",
+      partners: "Хамтрагч байгууллагууд",
+      testimonials: "Үйлчлүүлэгчдийн сэтгэгдэл",
+      ctaTitle: "Дараагийн төслөө бидэнтэй хамт эхлүүлээрэй.",
+      ctaSub: "Концепцээс ашиглалт хүртэлх бүх үе шатанд хамтран ажиллана.",
+    },
+    about: {
+      hero: "1998 оноос хойш Монголын барилгын салбарт.",
+      sub: "Бид зүгээр л барьдаггүй — бид үндэсний хөгжилд хувь нэмрээ оруулдаг.",
+      history: "Түүхэн товчоо",
+      vision: "Алсын хараа",
+      visionBody: "Монгол улсын дэд бүтцийг олон улсын стандартад нийцүүлж, ирээдүйн хотын төлөвлөлтийн тэргүүн манлайлагч байх.",
+      mission: "Эрхэм зорилго",
+      missionBody: "Аюулгүй, бат бөх, тогтвортой барилгуудыг цаг хугацаанд нь, төсөвт багтаан барих.",
+      team: "Удирдлагын баг",
+      certs: "Гэрчилгээ, тусгай зөвшөөрөл",
+      values: "Үнэт зүйлс",
+    },
+    services: {
+      title: "Бид юу хийдэг вэ",
+      sub: "Дизайнаас ашиглалт хүртэл — нэг гэрээгээр бүх шатанд.",
+    },
+    projects: {
+      title: "Бидний хэрэгжүүлсэн төслүүд",
+      sub: "Орон сууц, оффис, төрийн барилга, дэд бүтэц.",
+      filterAll: "Бүгд",
+      status: { completed: "Ашиглалтад орсон", ongoing: "Хэрэгжиж буй", planned: "Төлөвлөгдсөн" },
+    },
+    news: {
+      title: "Мэдээ ба нийтлэл",
+      sub: "Салбарын мэдээ, төслийн шинэчлэлт, корпорацийн зарлал.",
+    },
+    careers: {
+      title: "Бидэнтэй хамт ажиллаарай",
+      sub: "1,200+ ажилтантай, тогтвортой өсч буй багт нэгдээрэй.",
+      openRoles: "Нээлттэй ажлын байр",
+      benefits: "Урамшуулал",
+      apply: "Өргөдөл илгээх",
+      form: {
+        name: "Овог нэр",
+        email: "И-мэйл",
+        phone: "Утас",
+        position: "Сонирхож буй ажлын байр",
+        cv: "CV хавсаргах (PDF)",
+        message: "Танилцуулга",
+      },
+    },
+    contact: {
+      title: "Холбоо барих",
+      sub: "Бид 24 цагийн дотор хариу өгнө.",
+      office: "Төв оффис",
+      phone: "Утас",
+      email: "И-мэйл",
+      hours: "Ажиллах цаг",
+      form: { name: "Нэр", email: "И-мэйл", subject: "Гарчиг", message: "Зурвас", sent: "Илгээгдлээ" },
+    },
+    footer: {
+      tagline: "Үндэсний хэмжээний барилгын корпораци.",
+      explore: "Холбоосууд",
+      contact: "Холбоо барих",
+      legal: "© 2026 Altan Construct LLC. Бүх эрх хуулиар хамгаалагдсан.",
+      address: "Сүхбаатар дүүрэг, Энхтайваны өргөн чөлөө 17, Улаанбаатар",
+    },
+  },
+  en: {
+    brand: "ALTAN CONSTRUCT",
+    brandTagline: "Construction Corporation",
+    nav: {
+      home: "Home",
+      about: "About",
+      services: "Services",
+      projects: "Projects",
+      news: "News",
+      careers: "Careers",
+      contact: "Contact",
+    },
+    cta: {
+      viewProjects: "View Projects",
+      contactUs: "Contact Us",
+      readMore: "Read more",
+      getInTouch: "Get in touch",
+      apply: "Apply now",
+      send: "Send",
+      all: "All",
+    },
+    home: {
+      heroEyebrow: "Construction • Engineering • Infrastructure",
+      heroTitle: "We build the infrastructure of a nation.",
+      heroSub: "Since 1998, Mongolia's most consequential infrastructure, residential, and government projects — delivered.",
+      introEyebrow: "Introduction",
+      introTitle: "On schedule. On standard. Without compromise.",
+      introBody: "We are a national construction corporation with 25+ years of experience, certified to ISO 9001, ISO 14001, and ISO 45001. Our 1,200+ professionals deliver projects across Ulaanbaatar and all 21 aimags.",
+      services: "What we do",
+      featured: "Featured projects",
+      stats: "By the numbers",
+      gallery: "From the field",
+      latestNews: "Latest news",
+      partners: "Partners & clients",
+      testimonials: "Client testimonials",
+      ctaTitle: "Let's start your next project together.",
+      ctaSub: "From concept to commissioning, we walk every step with you.",
+    },
+    about: {
+      hero: "Building Mongolia since 1998.",
+      sub: "We don't just build — we contribute to the development of a nation.",
+      history: "History",
+      vision: "Vision",
+      visionBody: "To bring Mongolia's infrastructure to international standards and lead the future of urban planning.",
+      mission: "Mission",
+      missionBody: "To deliver safe, durable, and sustainable buildings on time and on budget — every time.",
+      team: "Leadership",
+      certs: "Certifications & Licenses",
+      values: "Values",
+    },
+    services: {
+      title: "What we do",
+      sub: "From design to commissioning — under one contract.",
+    },
+    projects: {
+      title: "Our delivered projects",
+      sub: "Residential, commercial, government, and infrastructure.",
+      filterAll: "All",
+      status: { completed: "Completed", ongoing: "Ongoing", planned: "Planned" },
+    },
+    news: {
+      title: "News & insights",
+      sub: "Industry news, project updates, corporate announcements.",
+    },
+    careers: {
+      title: "Build your career with us",
+      sub: "Join a 1,200+ strong, steadily growing national team.",
+      openRoles: "Open positions",
+      benefits: "Benefits",
+      apply: "Apply now",
+      form: {
+        name: "Full name",
+        email: "Email",
+        phone: "Phone",
+        position: "Position of interest",
+        cv: "Attach CV (PDF)",
+        message: "Cover note",
+      },
+    },
+    contact: {
+      title: "Contact",
+      sub: "We respond within 24 hours.",
+      office: "Head office",
+      phone: "Phone",
+      email: "Email",
+      hours: "Office hours",
+      form: { name: "Name", email: "Email", subject: "Subject", message: "Message", sent: "Message sent" },
+    },
+    footer: {
+      tagline: "A national construction corporation.",
+      explore: "Explore",
+      contact: "Contact",
+      legal: "© 2026 Altan Construct LLC. All rights reserved.",
+      address: "17 Peace Avenue, Sukhbaatar District, Ulaanbaatar",
+    },
+  },
+};
+
+export type Dict = (typeof dict)["mn"];
+
+export function t(locale: Locale): Dict {
+  return dict[locale] as Dict;
+}
