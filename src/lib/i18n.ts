@@ -199,10 +199,10 @@ export const dict = {
       address: "17 Peace Avenue, Sukhbaatar District, Ulaanbaatar",
     },
   },
-} as const;
+};
 
-export type Dict = typeof dict.mn;
+export type Dict = (typeof dict)["mn"];
 
 export function t(locale: Locale): Dict {
-  return dict[locale];
+  return dict[locale] as Dict;
 }
