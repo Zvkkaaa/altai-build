@@ -12,6 +12,9 @@ import amgalanMasterplan from "@/assets/amgalan-residence-masterplan.jpg";
 import amgalanAmenities from "@/assets/amgalan-residence-amenities.jpg";
 import amgalanInterior from "@/assets/amgalan-residence-interior.jpg";
 import amgalanLocation from "@/assets/amgalan-residence-location.jpg";
+import news1 from "@/assets/news-1.jpg";
+import news2 from "@/assets/news-2.jpg";
+import news3 from "@/assets/news-3.jpg";
 
 type L<T> = Record<Locale, T>;
 
