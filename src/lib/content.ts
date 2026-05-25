@@ -231,7 +231,3 @@ export const stats = [
   { value: 800, suffix: "+", label: { mn: "Мэргэжилтэн", en: "Professionals" } },
   { value: 100, suffix: "%", label: { mn: "Цутгамал төмөр бетон", en: "Cast-in-place concrete" } },
 ];
-
-  { value: 1200, suffix: "+", label: { mn: "Ажилтан", en: "Professionals" } },
-  { value: 21, suffix: "", label: { mn: "Аймагт үйл ажиллагаа", en: "Provinces covered" } },
-];
