@@ -1,15 +1,17 @@
 // Localized content modules — shaped like CMS records so they can be
 // swapped to Lovable Cloud queries without touching components.
 import type { Locale } from "./i18n";
-import projectResidential from "@/assets/project-residential.jpg";
 import projectOffice from "@/assets/project-office.jpg";
 import projectInfra from "@/assets/project-infrastructure.jpg";
 import projectIndustrial from "@/assets/project-industrial.jpg";
 import projectGov from "@/assets/project-government.jpg";
 import projectLuxury from "@/assets/project-luxury.jpg";
-import news1 from "@/assets/news-1.jpg";
-import news2 from "@/assets/news-2.jpg";
-import news3 from "@/assets/news-3.jpg";
+import amgalanHero from "@/assets/amgalan-residence-hero.jpg";
+import amgalanTowers from "@/assets/amgalan-residence-towers.jpg";
+import amgalanMasterplan from "@/assets/amgalan-residence-masterplan.jpg";
+import amgalanAmenities from "@/assets/amgalan-residence-amenities.jpg";
+import amgalanInterior from "@/assets/amgalan-residence-interior.jpg";
+import amgalanLocation from "@/assets/amgalan-residence-location.jpg";
 
 type L<T> = Record<Locale, T>;
 
@@ -27,71 +29,75 @@ export interface Project {
   description: L<string>;
 }
 
+export const amgalanGallery = [
+  amgalanHero, amgalanTowers, amgalanMasterplan, amgalanAmenities, amgalanInterior, amgalanLocation,
+];
+
 export const projects: Project[] = [
   {
-    slug: "khangai-residences",
-    title: { mn: "Хангай Резиденс", en: "Khangai Residences" },
+    slug: "amgalan-residence",
+    title: { mn: "AMGALAN RESIDENCE", en: "AMGALAN RESIDENCE" },
     category: "apartment",
-    location: { mn: "Улаанбаатар, Хан-Уул дүүрэг", en: "Khan-Uul District, Ulaanbaatar" },
-    status: "completed", year: 2024, image: projectResidential,
+    location: { mn: "Улаанбаатар, Богд уулын бэлд", en: "Foot of Bogd Mountain, Ulaanbaatar" },
+    status: "ongoing", year: 2026, image: amgalanHero,
     description: {
-      mn: "480 айлын орон сууцны иж бүрэн цогцолбор. Ажиглалтын дунд талбай, далд зогсоол, эрчим хүчний А зэрэг.",
-      en: "A 480-unit residential complex with central courtyard, underground parking, and A-class energy rating.",
+      mn: "5 блок, 15 давхар орон сууцны цогцолбор. 100% цутгамал төмөр бетон бүтэц, эрчим хүчний хэмнэлттэй шийдэл, нарны хавтан, 24 цагийн харуул хамгаалалт, далд болон ил зогсоол.",
+      en: "Five-block, 15-storey residential complex. 100% cast-in-place reinforced concrete, energy-efficient design, rooftop solar, 24/7 security, heated underground and surface parking.",
     },
   },
   {
-    slug: "central-tower",
-    title: { mn: "Сэнтрал Тауэр", en: "Central Tower" },
-    category: "office",
-    location: { mn: "Сүхбаатар дүүрэг", en: "Sukhbaatar District" },
-    status: "completed", year: 2023, image: projectOffice,
-    description: {
-      mn: "32 давхар, А зэрэглэлийн оффисын барилга. LEED Gold гэрчилгээтэй.",
-      en: "32-storey Grade-A office tower. LEED Gold certified.",
-    },
-  },
-  {
-    slug: "tuul-bridge",
-    title: { mn: "Туул голын гүүр", en: "Tuul River Bridge" },
-    category: "infrastructure",
-    location: { mn: "Төв аймаг", en: "Tuv Province" },
-    status: "completed", year: 2022, image: projectInfra,
-    description: {
-      mn: "640 метр урт автозамын гүүр, 4 эгнээ, өндөр ачаалал даах загвар.",
-      en: "640m highway bridge, four lanes, heavy-load engineered design.",
-    },
-  },
-  {
-    slug: "erdenet-plant",
-    title: { mn: "Эрдэнэт үйлдвэрийн өргөтгөл", en: "Erdenet Plant Expansion" },
+    slug: "oyu-tolgoi-shaft-2",
+    title: { mn: "Оюу Толгой — Босоо ам 2", en: "Oyu Tolgoi — Shaft 2" },
     category: "industrial",
-    location: { mn: "Орхон аймаг", en: "Orkhon Province" },
-    status: "ongoing", year: 2025, image: projectIndustrial,
+    location: { mn: "Өмнөговь аймаг", en: "Umnugovi Province" },
+    status: "completed", year: 2017, image: projectIndustrial,
     description: {
-      mn: "Зэсийн баяжуулах үйлдвэрийн III ээлжийн өргөтгөл, 28,000 м² талбай.",
-      en: "Phase-III expansion of the copper concentration plant, 28,000 m² floor area.",
+      mn: "Уурхайн агаар халаах байгууламж, наран байрны түр оффис, дэд бүтцийн ажлууд (НБИК ХХК хамтран).",
+      en: "Mine air-heating facility, Naran site office, and supporting infrastructure (delivered with NBIK LLC).",
     },
   },
   {
-    slug: "ministry-hq",
-    title: { mn: "Яамны төв байр", en: "Ministry Headquarters" },
-    category: "government",
-    location: { mn: "Улаанбаатар", en: "Ulaanbaatar" },
-    status: "completed", year: 2021, image: projectGov,
-    description: {
-      mn: "Төрийн захиргааны байгууллагын төв байрны иж бүрэн барилга.",
-      en: "Fully equipped government administrative headquarters building.",
-    },
-  },
-  {
-    slug: "bogd-villa",
-    title: { mn: "Богд Вилла", en: "Bogd Villa Estate" },
+    slug: "shangri-la-ub",
+    title: { mn: "Шангри-Ла зочид буудал", en: "Shangri-La Hotel" },
     category: "luxury",
-    location: { mn: "Зайсан, Улаанбаатар", en: "Zaisan, Ulaanbaatar" },
-    status: "completed", year: 2024, image: projectLuxury,
+    location: { mn: "Улаанбаатар", en: "Ulaanbaatar" },
+    status: "completed", year: 2013, image: projectLuxury,
     description: {
-      mn: "12 хувийн вилла, тансаг зэрэглэлийн дотоод засал, ландшафт.",
-      en: "12 private villas with luxury interior fit-out and landscape design.",
+      mn: "Олон улсын 5 одтой зочид буудлын барилга угсралтын ажилд оролцсон.",
+      en: "Contributed to construction works on the international 5-star hotel complex.",
+    },
+  },
+  {
+    slug: "new-ulaanbaatar-airport",
+    title: { mn: "Шинэ Чингис хаан нисэх буудал", en: "New Chinggis Khaan Airport" },
+    category: "infrastructure",
+    location: { mn: "Хөшигийн хөндий", en: "Khushig Valley" },
+    status: "completed", year: 2014, image: projectInfra,
+    description: {
+      mn: "Шинэ нисэх буудлын дэд бүтэц, барилга угсралтын ажлууд.",
+      en: "Infrastructure and construction works for the new international airport.",
+    },
+  },
+  {
+    slug: "cmcc-training",
+    title: { mn: "СиЭмТиСи Сургалтын төв", en: "CMCC Training Centre" },
+    category: "office",
+    location: { mn: "Оюу Толгой уурхай", en: "Oyu Tolgoi Mine" },
+    status: "completed", year: 2013, image: projectOffice,
+    description: {
+      mn: "Уул уурхайн сургалтын төвийн иж бүрэн барилга.",
+      en: "Full-scope construction of the mining training centre.",
+    },
+  },
+  {
+    slug: "manlai-sports-hall",
+    title: { mn: "Манлай Спорт танхим", en: "Manlai Sports Hall" },
+    category: "government",
+    location: { mn: "Өмнөговь, Манлай сум", en: "Manlai Soum, Umnugovi" },
+    status: "completed", year: 2015, image: projectGov,
+    description: {
+      mn: "Орон нутгийн спорт танхимын төсөл.",
+      en: "Regional sports hall delivered for the local administration.",
     },
   },
 ];
