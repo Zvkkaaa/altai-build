@@ -38,10 +38,10 @@ function ContactPage() {
         <div className="container-x grid md:grid-cols-12 gap-16">
           <Reveal className="md:col-span-5 space-y-12">
             {[
-              { label: tr.contact.office, value: l === "mn" ? "Сүхбаатар дүүрэг, Энхтайваны өргөн чөлөө 17\nУлаанбаатар, Монгол" : "17 Peace Avenue, Sukhbaatar District\nUlaanbaatar, Mongolia" },
-              { label: tr.contact.phone, value: "+976 7011 0000\n+976 9911 0000" },
-              { label: tr.contact.email, value: "hello@altanconstruct.mn\ncareers@altanconstruct.mn" },
-              { label: tr.contact.hours, value: l === "mn" ? "Даваа – Баасан · 09:00 – 18:00" : "Mon – Fri · 09:00 – 18:00" },
+              { label: tr.contact.office, value: l === "mn" ? "Сүхбаатар дүүрэг, 1-р хороо\nЭлчингийн гудамж, \"SAV\" оффис, 8 давхар, 806 тоот\nУлаанбаатар, Монгол" : "SAV Office, 8th floor #806\nElchingiin Street, 1st khoroo, Sukhbaatar District\nUlaanbaatar, Mongolia" },
+              { label: tr.contact.phone, value: "+976 9507-7733\n+976 9507-9955\n+976 7609-7777" },
+              { label: tr.contact.email, value: "info@hussenzug.mn\nsales@amgalanresidence.mn" },
+              { label: tr.contact.hours, value: l === "mn" ? "Даваа – Баасан · 09:00 – 18:00\nБямба · 10:00 – 14:00" : "Mon – Fri · 09:00 – 18:00\nSat · 10:00 – 14:00" },
             ].map((b) => (
               <div key={b.label} className="border-t border-hairline pt-6">
                 <p className="eyebrow text-muted-foreground mb-3">{b.label}</p>

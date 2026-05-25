@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { t, type Locale } from "@/lib/i18n";
 import { LanguageSwitcher } from "./LanguageSwitcher";
+import logo from "@/assets/logo-hussen-zug.jpeg";
 
 interface Props { transparent?: boolean }
 
@@ -41,12 +42,16 @@ export function Navbar({ transparent = false }: Props) {
     >
       <div className="container-x flex items-center justify-between h-16 md:h-20">
         <Link to={`/${lang}`} className="flex items-center gap-3 group">
-          <div
-            className={`h-2 w-8 transition-colors ${dark ? "bg-accent" : "bg-foreground"}`}
-            aria-hidden
-          />
           <span
-            className={`font-medium tracking-tight text-sm md:text-[15px] ${
+            className={`relative h-9 w-9 md:h-10 md:w-10 flex items-center justify-center rounded-sm transition-colors ${
+              dark ? "bg-white/95" : "bg-white"
+            }`}
+            aria-hidden
+          >
+            <img src={logo} alt="" className="h-full w-full object-contain p-0.5" />
+          </span>
+          <span
+            className={`font-semibold tracking-tight text-sm md:text-[15px] ${
               dark ? "text-white" : "text-foreground"
             }`}
           >
