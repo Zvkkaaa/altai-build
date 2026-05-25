@@ -137,24 +137,24 @@ export interface NewsPost {
 
 export const news: NewsPost[] = [
   {
-    slug: "tuul-bridge-opened",
-    title: { mn: "Туул голын гүүр ашиглалтад орлоо", en: "Tuul River Bridge officially opens" },
-    excerpt: { mn: "Төв аймгийн Зуунмод чиглэлийн авто замын гүүрийн нээлт боллоо.", en: "The new four-lane bridge on the Zuunmod corridor is now in service." },
-    category: { mn: "Дэд бүтэц", en: "Infrastructure" },
-    date: "2026-03-14", image: news1,
+    slug: "amgalan-residence-sales-open",
+    title: { mn: "AMGALAN RESIDENCE — борлуулалт нээгдлээ", en: "AMGALAN RESIDENCE — sales now open" },
+    excerpt: { mn: "5 блок, 15 давхар, 46-70 м² хүртэлх 2-3 өрөө орон сууцны борлуулалт эхэллээ.", en: "Two- and three-bedroom units, 46-70 m², across our 5-block, 15-storey complex are now available." },
+    category: { mn: "Борлуулалт", en: "Sales" },
+    date: "2026-04-10", image: news1,
   },
   {
-    slug: "iso-45001-recertified",
-    title: { mn: "ISO 45001 гэрчилгээгээ дахин баталгаажууллаа", en: "ISO 45001 recertification awarded" },
-    excerpt: { mn: "Хөдөлмөрийн аюулгүй ажиллагааны олон улсын стандартыг 3 дахь удаагаа баталгаажуулав.", en: "Our occupational health & safety system meets ISO 45001 for the third cycle." },
-    category: { mn: "Корпораци", en: "Corporate" },
+    slug: "top-100-mongolia",
+    title: { mn: "НБИК ХХК — Монгол улсын ТОП 100 ААН-ийн нэг", en: "NBIK LLC named in Mongolia's TOP 100 companies" },
+    excerpt: { mn: "Хамтрагч НБИК ХХК 2019 онд Монгол улсын ТОП 100 аж ахуйн нэгжид багтсан.", en: "Our partner NBIK LLC was recognised among Mongolia's TOP 100 enterprises in 2019." },
+    category: { mn: "Хүлээн зөвшөөрөгдөл", en: "Recognition" },
     date: "2026-02-02", image: news2,
   },
   {
-    slug: "erdenet-phase-three",
-    title: { mn: "Эрдэнэт үйлдвэрийн III ээлжийн өргөтгөл эхэллээ", en: "Erdenet Plant Phase-III expansion begins" },
-    excerpt: { mn: "28,000 м² өргөтгөлийн ажил 2026 онд эхэлж, 2027 онд ашиглалтад орно.", en: "The 28,000 m² expansion has broken ground; commissioning targeted for 2027." },
-    category: { mn: "Төсөл", en: "Projects" },
+    slug: "best-construction-2019",
+    title: { mn: "Шилдэг барилга угсралтын компани — 2018, 2019", en: "Best construction company — 2018, 2019" },
+    excerpt: { mn: "Барилга, хот байгуулалтын яамнаас 2 жил дараалан шилдэг барилгын компаниар шалгарлаа.", en: "Recognised by the Ministry of Construction as best construction company two years running." },
+    category: { mn: "Шагнал", en: "Awards" },
     date: "2026-01-20", image: news3,
   },
 ];
@@ -167,7 +167,7 @@ export interface TeamMember {
 
 export const team: TeamMember[] = [
   { name: "Б. Энхбаатар", role: { mn: "Гүйцэтгэх захирал", en: "Chief Executive Officer" }, initials: "БЭ" },
-  { name: "Д. Оюунчимэг", role: { mn: "Гүйцэтгэх захирлын орлогч", en: "Chief Operating Officer" }, initials: "ДО" },
+  { name: "Д. Оюунчимэг", role: { mn: "Борлуулалтын захирал", en: "Sales Director" }, initials: "ДО" },
   { name: "Ц. Ганбат", role: { mn: "Ерөнхий инженер", en: "Chief Engineer" }, initials: "ЦГ" },
   { name: "С. Болормаа", role: { mn: "Санхүүгийн захирал", en: "Chief Financial Officer" }, initials: "СБ" },
 ];
@@ -181,27 +181,27 @@ export interface Testimonial {
 export const testimonials: Testimonial[] = [
   {
     quote: {
-      mn: "Цаг хугацаанд нь, төсөвт багтаасан. Албан ёсны төслүүдэд итгэлтэй сонголт.",
-      en: "Delivered on time and within budget. A reliable partner for government projects.",
+      mn: "Оюу Толгойн төслүүдэд цаг хугацаа, чанарын стандартыг өндөр түвшинд биелүүлдэг найдвартай хамтрагч.",
+      en: "A reliable partner on Oyu Tolgoi projects — delivering to the highest quality and schedule standards.",
     },
-    author: "Г. Цэрэндорж",
+    author: "Oyu Tolgoi",
+    org: { mn: "Шилдэг хангагч — 2014, 2016", en: "Best supplier — 2014, 2016" },
+  },
+  {
+    quote: {
+      mn: "Орон сууцны хотхоны бүхий л үе шатанд хариуцлагатай, мэргэжлийн хандлагыг харуулсан.",
+      en: "Showed professionalism and accountability throughout every phase of the residential project.",
+    },
+    author: "AMGALAN RESIDENCE",
+    org: { mn: "Оршин суугчдын зөвлөл", en: "Residents council" },
+  },
+  {
+    quote: {
+      mn: "БХБЯ-ны шилдэг барилга угсралтын компани шалгарсан нь чанарын баталгаа.",
+      en: "Being named the Ministry's best construction company is a guarantee of quality.",
+    },
+    author: "БХБЯ",
     org: { mn: "Барилга, хот байгуулалтын яам", en: "Ministry of Construction" },
-  },
-  {
-    quote: {
-      mn: "Чанарын стандарт нь олон улсын түвшний. Манай төв байрны төслийг гайхалтай гүйцэтгэсэн.",
-      en: "International-grade quality. Our headquarters project was executed flawlessly.",
-    },
-    author: "M. Anderson",
-    org: { mn: "Глобал Майнинг ХХК", en: "Global Mining LLC" },
-  },
-  {
-    quote: {
-      mn: "Хариуцлага, технологи, мэргэжлийн баг — гурвуулаа давамгайлсан компани.",
-      en: "Accountable, technology-driven, and deeply professional from start to finish.",
-    },
-    author: "Б. Сараа",
-    org: { mn: "Хангай Холдинг", en: "Khangai Holding" },
   },
 ];
 
@@ -215,19 +215,23 @@ export interface JobPost {
 
 export const jobs: JobPost[] = [
   { slug: "site-engineer", title: { mn: "Талбайн инженер", en: "Site Engineer" }, location: { mn: "Улаанбаатар", en: "Ulaanbaatar" }, type: { mn: "Бүтэн цаг", en: "Full-time" }, department: { mn: "Гүйцэтгэл", en: "Operations" } },
-  { slug: "project-manager", title: { mn: "Төслийн менежер", en: "Project Manager" }, location: { mn: "Улаанбаатар", en: "Ulaanbaatar" }, type: { mn: "Бүтэн цаг", en: "Full-time" }, department: { mn: "Менежмент", en: "Management" } },
+  { slug: "sales-consultant", title: { mn: "Борлуулалтын зөвлөх", en: "Sales Consultant" }, location: { mn: "Улаанбаатар", en: "Ulaanbaatar" }, type: { mn: "Бүтэн цаг", en: "Full-time" }, department: { mn: "Борлуулалт", en: "Sales" } },
   { slug: "architect", title: { mn: "Архитектор", en: "Architect" }, location: { mn: "Улаанбаатар", en: "Ulaanbaatar" }, type: { mn: "Бүтэн цаг", en: "Full-time" }, department: { mn: "Дизайн", en: "Design" } },
-  { slug: "qhse-officer", title: { mn: "ХАБЭА мэргэжилтэн", en: "QHSE Officer" }, location: { mn: "Эрдэнэт", en: "Erdenet" }, type: { mn: "Бүтэн цаг", en: "Full-time" }, department: { mn: "ХАБЭА", en: "HSE" } },
+  { slug: "qhse-officer", title: { mn: "ХАБЭА мэргэжилтэн", en: "QHSE Officer" }, location: { mn: "Оюу Толгой", en: "Oyu Tolgoi" }, type: { mn: "Бүтэн цаг", en: "Full-time" }, department: { mn: "ХАБЭА", en: "HSE" } },
   { slug: "estimator", title: { mn: "Төсөвчин", en: "Quantity Surveyor" }, location: { mn: "Улаанбаатар", en: "Ulaanbaatar" }, type: { mn: "Бүтэн цаг", en: "Full-time" }, department: { mn: "Төсөв", en: "Commercial" } },
 ];
 
 export const partners = [
-  "MCS", "Erdenet", "MIAT", "Rio Tinto", "Khan Bank", "Newcom", "UB City", "Tavan Bogd",
+  "Oyu Tolgoi", "NBIK", "Jacobs", "Samsung", "LG Hausys", "Shangri-La", "Worley", "Golomt Bank", "Wagner CAT", "Bayan Airag", "MMSE", "Steppe Arena",
 ];
 
 export const stats = [
-  { value: 25, suffix: "+", label: { mn: "Жилийн туршлага", en: "Years of experience" } },
-  { value: 340, suffix: "", label: { mn: "Гүйцэтгэсэн төсөл", en: "Projects delivered" } },
+  { value: 15, suffix: "+", label: { mn: "Жилийн туршлага", en: "Years of experience" } },
+  { value: 5, suffix: "", label: { mn: "Блок · AMGALAN RESIDENCE", en: "Blocks · AMGALAN RESIDENCE" } },
+  { value: 800, suffix: "+", label: { mn: "Мэргэжилтэн", en: "Professionals" } },
+  { value: 100, suffix: "%", label: { mn: "Цутгамал төмөр бетон", en: "Cast-in-place concrete" } },
+];
+
   { value: 1200, suffix: "+", label: { mn: "Ажилтан", en: "Professionals" } },
   { value: 21, suffix: "", label: { mn: "Аймагт үйл ажиллагаа", en: "Provinces covered" } },
 ];
