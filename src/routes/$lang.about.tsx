@@ -44,6 +44,23 @@ function AboutPage() {
       <Navbar />
       <PageHero eyebrow={tr.nav.about} title={tr.about.hero} sub={tr.about.sub} />
 
+      {/* Video */}
+      <section className="py-16 md:py-24 border-b border-hairline">
+        <div className="container-x">
+          <p className="eyebrow text-muted-foreground mb-6">{tr.about.video}</p>
+          <div className="relative aspect-video w-full overflow-hidden bg-foreground">
+            <iframe
+              src="https://www.youtube.com/embed/QGQRm2wlIpU"
+              title={tr.about.video}
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+              className="absolute inset-0 h-full w-full"
+            />
+          </div>
+        </div>
+      </section>
+
+
       <section className="py-24 md:py-32">
         <div className="container-x grid md:grid-cols-12 gap-12">
           <Reveal className="md:col-span-7">

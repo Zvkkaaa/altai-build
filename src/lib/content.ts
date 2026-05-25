@@ -1,12 +1,17 @@
 // Localized content modules — shaped like CMS records so they can be
 // swapped to Lovable Cloud queries without touching components.
 import type { Locale } from "./i18n";
-import projectResidential from "@/assets/project-residential.jpg";
 import projectOffice from "@/assets/project-office.jpg";
 import projectInfra from "@/assets/project-infrastructure.jpg";
 import projectIndustrial from "@/assets/project-industrial.jpg";
 import projectGov from "@/assets/project-government.jpg";
 import projectLuxury from "@/assets/project-luxury.jpg";
+import amgalanHero from "@/assets/amgalan-residence-hero.jpg";
+import amgalanTowers from "@/assets/amgalan-residence-towers.jpg";
+import amgalanMasterplan from "@/assets/amgalan-residence-masterplan.jpg";
+import amgalanAmenities from "@/assets/amgalan-residence-amenities.jpg";
+import amgalanInterior from "@/assets/amgalan-residence-interior.jpg";
+import amgalanLocation from "@/assets/amgalan-residence-location.jpg";
 import news1 from "@/assets/news-1.jpg";
 import news2 from "@/assets/news-2.jpg";
 import news3 from "@/assets/news-3.jpg";
@@ -27,71 +32,75 @@ export interface Project {
   description: L<string>;
 }
 
+export const amgalanGallery = [
+  amgalanHero, amgalanTowers, amgalanMasterplan, amgalanAmenities, amgalanInterior, amgalanLocation,
+];
+
 export const projects: Project[] = [
   {
-    slug: "khangai-residences",
-    title: { mn: "Хангай Резиденс", en: "Khangai Residences" },
+    slug: "amgalan-residence",
+    title: { mn: "AMGALAN RESIDENCE", en: "AMGALAN RESIDENCE" },
     category: "apartment",
-    location: { mn: "Улаанбаатар, Хан-Уул дүүрэг", en: "Khan-Uul District, Ulaanbaatar" },
-    status: "completed", year: 2024, image: projectResidential,
+    location: { mn: "Улаанбаатар, Богд уулын бэлд", en: "Foot of Bogd Mountain, Ulaanbaatar" },
+    status: "ongoing", year: 2026, image: amgalanHero,
     description: {
-      mn: "480 айлын орон сууцны иж бүрэн цогцолбор. Ажиглалтын дунд талбай, далд зогсоол, эрчим хүчний А зэрэг.",
-      en: "A 480-unit residential complex with central courtyard, underground parking, and A-class energy rating.",
+      mn: "5 блок, 15 давхар орон сууцны цогцолбор. 100% цутгамал төмөр бетон бүтэц, эрчим хүчний хэмнэлттэй шийдэл, нарны хавтан, 24 цагийн харуул хамгаалалт, далд болон ил зогсоол.",
+      en: "Five-block, 15-storey residential complex. 100% cast-in-place reinforced concrete, energy-efficient design, rooftop solar, 24/7 security, heated underground and surface parking.",
     },
   },
   {
-    slug: "central-tower",
-    title: { mn: "Сэнтрал Тауэр", en: "Central Tower" },
-    category: "office",
-    location: { mn: "Сүхбаатар дүүрэг", en: "Sukhbaatar District" },
-    status: "completed", year: 2023, image: projectOffice,
-    description: {
-      mn: "32 давхар, А зэрэглэлийн оффисын барилга. LEED Gold гэрчилгээтэй.",
-      en: "32-storey Grade-A office tower. LEED Gold certified.",
-    },
-  },
-  {
-    slug: "tuul-bridge",
-    title: { mn: "Туул голын гүүр", en: "Tuul River Bridge" },
-    category: "infrastructure",
-    location: { mn: "Төв аймаг", en: "Tuv Province" },
-    status: "completed", year: 2022, image: projectInfra,
-    description: {
-      mn: "640 метр урт автозамын гүүр, 4 эгнээ, өндөр ачаалал даах загвар.",
-      en: "640m highway bridge, four lanes, heavy-load engineered design.",
-    },
-  },
-  {
-    slug: "erdenet-plant",
-    title: { mn: "Эрдэнэт үйлдвэрийн өргөтгөл", en: "Erdenet Plant Expansion" },
+    slug: "oyu-tolgoi-shaft-2",
+    title: { mn: "Оюу Толгой — Босоо ам 2", en: "Oyu Tolgoi — Shaft 2" },
     category: "industrial",
-    location: { mn: "Орхон аймаг", en: "Orkhon Province" },
-    status: "ongoing", year: 2025, image: projectIndustrial,
+    location: { mn: "Өмнөговь аймаг", en: "Umnugovi Province" },
+    status: "completed", year: 2017, image: projectIndustrial,
     description: {
-      mn: "Зэсийн баяжуулах үйлдвэрийн III ээлжийн өргөтгөл, 28,000 м² талбай.",
-      en: "Phase-III expansion of the copper concentration plant, 28,000 m² floor area.",
+      mn: "Уурхайн агаар халаах байгууламж, наран байрны түр оффис, дэд бүтцийн ажлууд (НБИК ХХК хамтран).",
+      en: "Mine air-heating facility, Naran site office, and supporting infrastructure (delivered with NBIK LLC).",
     },
   },
   {
-    slug: "ministry-hq",
-    title: { mn: "Яамны төв байр", en: "Ministry Headquarters" },
-    category: "government",
-    location: { mn: "Улаанбаатар", en: "Ulaanbaatar" },
-    status: "completed", year: 2021, image: projectGov,
-    description: {
-      mn: "Төрийн захиргааны байгууллагын төв байрны иж бүрэн барилга.",
-      en: "Fully equipped government administrative headquarters building.",
-    },
-  },
-  {
-    slug: "bogd-villa",
-    title: { mn: "Богд Вилла", en: "Bogd Villa Estate" },
+    slug: "shangri-la-ub",
+    title: { mn: "Шангри-Ла зочид буудал", en: "Shangri-La Hotel" },
     category: "luxury",
-    location: { mn: "Зайсан, Улаанбаатар", en: "Zaisan, Ulaanbaatar" },
-    status: "completed", year: 2024, image: projectLuxury,
+    location: { mn: "Улаанбаатар", en: "Ulaanbaatar" },
+    status: "completed", year: 2013, image: projectLuxury,
     description: {
-      mn: "12 хувийн вилла, тансаг зэрэглэлийн дотоод засал, ландшафт.",
-      en: "12 private villas with luxury interior fit-out and landscape design.",
+      mn: "Олон улсын 5 одтой зочид буудлын барилга угсралтын ажилд оролцсон.",
+      en: "Contributed to construction works on the international 5-star hotel complex.",
+    },
+  },
+  {
+    slug: "new-ulaanbaatar-airport",
+    title: { mn: "Шинэ Чингис хаан нисэх буудал", en: "New Chinggis Khaan Airport" },
+    category: "infrastructure",
+    location: { mn: "Хөшигийн хөндий", en: "Khushig Valley" },
+    status: "completed", year: 2014, image: projectInfra,
+    description: {
+      mn: "Шинэ нисэх буудлын дэд бүтэц, барилга угсралтын ажлууд.",
+      en: "Infrastructure and construction works for the new international airport.",
+    },
+  },
+  {
+    slug: "cmcc-training",
+    title: { mn: "СиЭмТиСи Сургалтын төв", en: "CMCC Training Centre" },
+    category: "office",
+    location: { mn: "Оюу Толгой уурхай", en: "Oyu Tolgoi Mine" },
+    status: "completed", year: 2013, image: projectOffice,
+    description: {
+      mn: "Уул уурхайн сургалтын төвийн иж бүрэн барилга.",
+      en: "Full-scope construction of the mining training centre.",
+    },
+  },
+  {
+    slug: "manlai-sports-hall",
+    title: { mn: "Манлай Спорт танхим", en: "Manlai Sports Hall" },
+    category: "government",
+    location: { mn: "Өмнөговь, Манлай сум", en: "Manlai Soum, Umnugovi" },
+    status: "completed", year: 2015, image: projectGov,
+    description: {
+      mn: "Орон нутгийн спорт танхимын төсөл.",
+      en: "Regional sports hall delivered for the local administration.",
     },
   },
 ];
@@ -128,24 +137,24 @@ export interface NewsPost {
 
 export const news: NewsPost[] = [
   {
-    slug: "tuul-bridge-opened",
-    title: { mn: "Туул голын гүүр ашиглалтад орлоо", en: "Tuul River Bridge officially opens" },
-    excerpt: { mn: "Төв аймгийн Зуунмод чиглэлийн авто замын гүүрийн нээлт боллоо.", en: "The new four-lane bridge on the Zuunmod corridor is now in service." },
-    category: { mn: "Дэд бүтэц", en: "Infrastructure" },
-    date: "2026-03-14", image: news1,
+    slug: "amgalan-residence-sales-open",
+    title: { mn: "AMGALAN RESIDENCE — борлуулалт нээгдлээ", en: "AMGALAN RESIDENCE — sales now open" },
+    excerpt: { mn: "5 блок, 15 давхар, 46-70 м² хүртэлх 2-3 өрөө орон сууцны борлуулалт эхэллээ.", en: "Two- and three-bedroom units, 46-70 m², across our 5-block, 15-storey complex are now available." },
+    category: { mn: "Борлуулалт", en: "Sales" },
+    date: "2026-04-10", image: news1,
   },
   {
-    slug: "iso-45001-recertified",
-    title: { mn: "ISO 45001 гэрчилгээгээ дахин баталгаажууллаа", en: "ISO 45001 recertification awarded" },
-    excerpt: { mn: "Хөдөлмөрийн аюулгүй ажиллагааны олон улсын стандартыг 3 дахь удаагаа баталгаажуулав.", en: "Our occupational health & safety system meets ISO 45001 for the third cycle." },
-    category: { mn: "Корпораци", en: "Corporate" },
+    slug: "top-100-mongolia",
+    title: { mn: "НБИК ХХК — Монгол улсын ТОП 100 ААН-ийн нэг", en: "NBIK LLC named in Mongolia's TOP 100 companies" },
+    excerpt: { mn: "Хамтрагч НБИК ХХК 2019 онд Монгол улсын ТОП 100 аж ахуйн нэгжид багтсан.", en: "Our partner NBIK LLC was recognised among Mongolia's TOP 100 enterprises in 2019." },
+    category: { mn: "Хүлээн зөвшөөрөгдөл", en: "Recognition" },
     date: "2026-02-02", image: news2,
   },
   {
-    slug: "erdenet-phase-three",
-    title: { mn: "Эрдэнэт үйлдвэрийн III ээлжийн өргөтгөл эхэллээ", en: "Erdenet Plant Phase-III expansion begins" },
-    excerpt: { mn: "28,000 м² өргөтгөлийн ажил 2026 онд эхэлж, 2027 онд ашиглалтад орно.", en: "The 28,000 m² expansion has broken ground; commissioning targeted for 2027." },
-    category: { mn: "Төсөл", en: "Projects" },
+    slug: "best-construction-2019",
+    title: { mn: "Шилдэг барилга угсралтын компани — 2018, 2019", en: "Best construction company — 2018, 2019" },
+    excerpt: { mn: "Барилга, хот байгуулалтын яамнаас 2 жил дараалан шилдэг барилгын компаниар шалгарлаа.", en: "Recognised by the Ministry of Construction as best construction company two years running." },
+    category: { mn: "Шагнал", en: "Awards" },
     date: "2026-01-20", image: news3,
   },
 ];
@@ -158,7 +167,7 @@ export interface TeamMember {
 
 export const team: TeamMember[] = [
   { name: "Б. Энхбаатар", role: { mn: "Гүйцэтгэх захирал", en: "Chief Executive Officer" }, initials: "БЭ" },
-  { name: "Д. Оюунчимэг", role: { mn: "Гүйцэтгэх захирлын орлогч", en: "Chief Operating Officer" }, initials: "ДО" },
+  { name: "Д. Оюунчимэг", role: { mn: "Борлуулалтын захирал", en: "Sales Director" }, initials: "ДО" },
   { name: "Ц. Ганбат", role: { mn: "Ерөнхий инженер", en: "Chief Engineer" }, initials: "ЦГ" },
   { name: "С. Болормаа", role: { mn: "Санхүүгийн захирал", en: "Chief Financial Officer" }, initials: "СБ" },
 ];
@@ -172,27 +181,27 @@ export interface Testimonial {
 export const testimonials: Testimonial[] = [
   {
     quote: {
-      mn: "Цаг хугацаанд нь, төсөвт багтаасан. Албан ёсны төслүүдэд итгэлтэй сонголт.",
-      en: "Delivered on time and within budget. A reliable partner for government projects.",
+      mn: "Оюу Толгойн төслүүдэд цаг хугацаа, чанарын стандартыг өндөр түвшинд биелүүлдэг найдвартай хамтрагч.",
+      en: "A reliable partner on Oyu Tolgoi projects — delivering to the highest quality and schedule standards.",
     },
-    author: "Г. Цэрэндорж",
+    author: "Oyu Tolgoi",
+    org: { mn: "Шилдэг хангагч — 2014, 2016", en: "Best supplier — 2014, 2016" },
+  },
+  {
+    quote: {
+      mn: "Орон сууцны хотхоны бүхий л үе шатанд хариуцлагатай, мэргэжлийн хандлагыг харуулсан.",
+      en: "Showed professionalism and accountability throughout every phase of the residential project.",
+    },
+    author: "AMGALAN RESIDENCE",
+    org: { mn: "Оршин суугчдын зөвлөл", en: "Residents council" },
+  },
+  {
+    quote: {
+      mn: "БХБЯ-ны шилдэг барилга угсралтын компани шалгарсан нь чанарын баталгаа.",
+      en: "Being named the Ministry's best construction company is a guarantee of quality.",
+    },
+    author: "БХБЯ",
     org: { mn: "Барилга, хот байгуулалтын яам", en: "Ministry of Construction" },
-  },
-  {
-    quote: {
-      mn: "Чанарын стандарт нь олон улсын түвшний. Манай төв байрны төслийг гайхалтай гүйцэтгэсэн.",
-      en: "International-grade quality. Our headquarters project was executed flawlessly.",
-    },
-    author: "M. Anderson",
-    org: { mn: "Глобал Майнинг ХХК", en: "Global Mining LLC" },
-  },
-  {
-    quote: {
-      mn: "Хариуцлага, технологи, мэргэжлийн баг — гурвуулаа давамгайлсан компани.",
-      en: "Accountable, technology-driven, and deeply professional from start to finish.",
-    },
-    author: "Б. Сараа",
-    org: { mn: "Хангай Холдинг", en: "Khangai Holding" },
   },
 ];
 
@@ -206,19 +215,19 @@ export interface JobPost {
 
 export const jobs: JobPost[] = [
   { slug: "site-engineer", title: { mn: "Талбайн инженер", en: "Site Engineer" }, location: { mn: "Улаанбаатар", en: "Ulaanbaatar" }, type: { mn: "Бүтэн цаг", en: "Full-time" }, department: { mn: "Гүйцэтгэл", en: "Operations" } },
-  { slug: "project-manager", title: { mn: "Төслийн менежер", en: "Project Manager" }, location: { mn: "Улаанбаатар", en: "Ulaanbaatar" }, type: { mn: "Бүтэн цаг", en: "Full-time" }, department: { mn: "Менежмент", en: "Management" } },
+  { slug: "sales-consultant", title: { mn: "Борлуулалтын зөвлөх", en: "Sales Consultant" }, location: { mn: "Улаанбаатар", en: "Ulaanbaatar" }, type: { mn: "Бүтэн цаг", en: "Full-time" }, department: { mn: "Борлуулалт", en: "Sales" } },
   { slug: "architect", title: { mn: "Архитектор", en: "Architect" }, location: { mn: "Улаанбаатар", en: "Ulaanbaatar" }, type: { mn: "Бүтэн цаг", en: "Full-time" }, department: { mn: "Дизайн", en: "Design" } },
-  { slug: "qhse-officer", title: { mn: "ХАБЭА мэргэжилтэн", en: "QHSE Officer" }, location: { mn: "Эрдэнэт", en: "Erdenet" }, type: { mn: "Бүтэн цаг", en: "Full-time" }, department: { mn: "ХАБЭА", en: "HSE" } },
+  { slug: "qhse-officer", title: { mn: "ХАБЭА мэргэжилтэн", en: "QHSE Officer" }, location: { mn: "Оюу Толгой", en: "Oyu Tolgoi" }, type: { mn: "Бүтэн цаг", en: "Full-time" }, department: { mn: "ХАБЭА", en: "HSE" } },
   { slug: "estimator", title: { mn: "Төсөвчин", en: "Quantity Surveyor" }, location: { mn: "Улаанбаатар", en: "Ulaanbaatar" }, type: { mn: "Бүтэн цаг", en: "Full-time" }, department: { mn: "Төсөв", en: "Commercial" } },
 ];
 
 export const partners = [
-  "MCS", "Erdenet", "MIAT", "Rio Tinto", "Khan Bank", "Newcom", "UB City", "Tavan Bogd",
+  "Oyu Tolgoi", "NBIK", "Jacobs", "Samsung", "LG Hausys", "Shangri-La", "Worley", "Golomt Bank", "Wagner CAT", "Bayan Airag", "MMSE", "Steppe Arena",
 ];
 
 export const stats = [
-  { value: 25, suffix: "+", label: { mn: "Жилийн туршлага", en: "Years of experience" } },
-  { value: 340, suffix: "", label: { mn: "Гүйцэтгэсэн төсөл", en: "Projects delivered" } },
-  { value: 1200, suffix: "+", label: { mn: "Ажилтан", en: "Professionals" } },
-  { value: 21, suffix: "", label: { mn: "Аймагт үйл ажиллагаа", en: "Provinces covered" } },
+  { value: 15, suffix: "+", label: { mn: "Жилийн туршлага", en: "Years of experience" } },
+  { value: 5, suffix: "", label: { mn: "Блок · AMGALAN RESIDENCE", en: "Blocks · AMGALAN RESIDENCE" } },
+  { value: 800, suffix: "+", label: { mn: "Мэргэжилтэн", en: "Professionals" } },
+  { value: 100, suffix: "%", label: { mn: "Цутгамал төмөр бетон", en: "Cast-in-place concrete" } },
 ];

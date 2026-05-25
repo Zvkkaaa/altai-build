@@ -6,7 +6,7 @@ import { Reveal } from "@/components/site/Reveal";
 import { Counter } from "@/components/site/Counter";
 import { t, type Locale } from "@/lib/i18n";
 import { projects, services, news, testimonials, stats, partners } from "@/lib/content";
-import heroImg from "@/assets/hero-construction.jpg";
+import heroImg from "@/assets/amgalan-residence-towers.jpg";
 
 export const Route = createFileRoute("/$lang/")({
   head: ({ params }) => {
