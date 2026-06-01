@@ -27,9 +27,9 @@ export function Navbar({ transparent = false }: Props) {
     { to: `/${lang}/about`, label: tr.nav.about },
     { to: `/${lang}/services`, label: tr.nav.services },
     { to: `/${lang}/projects`, label: tr.nav.projects },
+    { to: `/${lang}/gallery`, label: tr.nav.gallery },
     { to: `/${lang}/news`, label: tr.nav.news },
     { to: `/${lang}/social-duty`, label: tr.nav.socialDuty },
-    // { to: `/${lang}/careers`, label: tr.nav.careers },
     { to: `/${lang}/contact`, label: tr.nav.contact },
   ];
 

@@ -32,33 +32,30 @@ function ServicesPage() {
     <>
       <Navbar />
       <PageHero eyebrow={tr.nav.services} title={tr.services.title} sub={tr.services.sub} />
-      <section className="py-20 md:py-28">
-        <div className="container-x grid grid-cols-1 md:grid-cols-2 gap-y-20 gap-x-16">
+      <section className="py-20 md:py-32">
+        <div className="container-x grid grid-cols-1 md:grid-cols-2 gap-y-24 gap-x-20">
           {services.map((s, i) => (
-            <Reveal key={s.slug} delay={i * 0.05}>
-              <div className="flex items-start gap-6">
-                <span className="display text-2xl text-muted-foreground tabular-nums pt-1">
+            <Reveal key={s.slug} delay={(i % 2) * 0.08}>
+              <article className="group">
+                <p className="display text-sm text-accent tabular-nums tracking-widest">
                   /{String(i + 1).padStart(2, "0")}
-                </span>
-                <div>
-                  <h2 className="display text-3xl md:text-4xl">{s.title[l]}</h2>
-                  <p className="mt-5 text-lg text-muted-foreground leading-relaxed max-w-lg">
-                    {s.summary[l]}
-                  </p>
-                  <ul className="mt-8 space-y-2.5 text-sm border-t border-hairline pt-6">
-                    {[1, 2, 3, 4].map((n) => (
-                      <li key={n} className="flex items-start gap-3">
-                        <span className="text-accent mt-1">—</span>
-                        <span className="text-foreground/80">
-                          {l === "mn"
-                            ? `Үе шат ${n}: техникийн санал, төсөв, гүйцэтгэл, хяналт.`
-                            : `Phase ${n}: technical proposal, costing, delivery, supervision.`}
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
+                </p>
+                <h2 className="display text-3xl md:text-5xl mt-5 transition-transform duration-500 group-hover:translate-x-1">
+                  {s.title[l]}
+                </h2>
+                <div className="mt-6 h-px w-full bg-hairline" />
+                <p className="mt-6 text-base md:text-lg text-muted-foreground leading-relaxed max-w-xl">
+                  {s.summary[l]}
+                </p>
+                <ul className="mt-8 space-y-3">
+                  {s.features[l].map((f) => (
+                    <li key={f} className="flex items-start gap-3 text-[15px]">
+                      <span className="mt-2 h-1.5 w-1.5 rounded-full bg-accent shrink-0" />
+                      <span className="text-foreground/85">{f}</span>
+                    </li>
+                  ))}
+                </ul>
+              </article>
             </Reveal>
           ))}
         </div>

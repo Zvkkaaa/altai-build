@@ -60,9 +60,9 @@
   --muted: oklch(0.96 0.004 90);
   --muted-foreground: oklch(0.45 0.01 270);
 
-  /* Construction yellow */
-  --accent: oklch(0.86 0.175 92);
-  --accent-foreground: oklch(0.15 0.01 270);
+  /* Gold #D4AF37 */
+  --accent: oklch(0.765 0.125 84);
+  --accent-foreground: oklch(0.13 0.005 270);
 
   --destructive: oklch(0.55 0.22 27);
   --destructive-foreground: oklch(0.99 0 0);
@@ -88,7 +88,7 @@
   --secondary-foreground: oklch(0.98 0 0);
   --muted: oklch(0.22 0.005 270);
   --muted-foreground: oklch(0.7 0.01 270);
-  --accent: oklch(0.86 0.175 92);
+  --accent: oklch(0.765 0.125 84);
   --accent-foreground: oklch(0.13 0.005 270);
   --border: oklch(1 0 0 / 12%);
   --hairline: oklch(1 0 0 / 8%);
