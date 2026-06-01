@@ -109,21 +109,82 @@ export interface Service {
   slug: string;
   title: L<string>;
   summary: L<string>;
+  features: L<string[]>;
 }
 
 export const services: Service[] = [
-  { slug: "residential", title: { mn: "Орон сууцны барилга", en: "Residential Construction" },
-    summary: { mn: "Олон давхар орон сууц, цогцолбор, иргэний барилга.", en: "Multi-storey residential blocks, complexes, and civil buildings." } },
-  { slug: "commercial", title: { mn: "Арилжааны барилга", en: "Commercial Buildings" },
-    summary: { mn: "А зэрэглэлийн оффис, худалдааны төв, зочид буудал.", en: "Grade-A offices, shopping centers, and hotels." } },
-  { slug: "infrastructure", title: { mn: "Дэд бүтэц", en: "Infrastructure" },
-    summary: { mn: "Зам, гүүр, инженерийн шугам сүлжээ, нийтийн үйлчилгээ.", en: "Roads, bridges, utilities, and public works." } },
-  { slug: "architecture", title: { mn: "Архитектурын зураг төсөл", en: "Architecture Design" },
-    summary: { mn: "Концепцээс ажлын зураг хүртэлх бүх үе шат.", en: "Concept through construction documentation." } },
-  { slug: "interior", title: { mn: "Дотоод засал", en: "Interior Design" },
-    summary: { mn: "Орчны загвар, материал, гүйцэтгэлийн менежмент.", en: "Spatial design, materials, and fit-out management." } },
-  { slug: "engineering", title: { mn: "Инженерийн зөвлөгөө", en: "Engineering Consulting" },
-    summary: { mn: "Бүтэц, цахилгаан, механик, хяналтын зөвлөх үйлчилгээ.", en: "Structural, electrical, mechanical, and supervision consulting." } },
+  {
+    slug: "residential",
+    title: { mn: "Орон сууцны барилга", en: "Residential Construction" },
+    summary: {
+      mn: "Олон давхар орон сууц, хотхон, цогцолбор, иргэний зориулалттай барилгын зураг төсөл, гүйцэтгэл, хяналтын үйлчилгээ.",
+      en: "Design, delivery, and supervision of multi-storey residential blocks, complexes, and civil buildings.",
+    },
+    features: {
+      mn: ["Техникийн нөхцөл, судалгаа", "Архитектурын зураг төсөл", "Барилгын угсралт", "Чанарын хяналт", "Ашиглалтад хүлээлгэн өгөх"],
+      en: ["Technical conditions & feasibility", "Architectural design", "Construction & assembly", "Quality control", "Handover & commissioning"],
+    },
+  },
+  {
+    slug: "commercial",
+    title: { mn: "Арилжааны барилга", en: "Commercial Construction" },
+    summary: {
+      mn: "Оффис, худалдааны төв, үйлчилгээний төв, бизнесийн барилгын иж бүрэн шийдэл.",
+      en: "End-to-end delivery of offices, retail centres, service hubs, and business buildings.",
+    },
+    features: {
+      mn: ["Судалгаа", "Концепц төлөвлөлт", "Төсөв", "Барилгын менежмент", "Хяналт"],
+      en: ["Feasibility studies", "Concept planning", "Cost estimation", "Construction management", "Supervision"],
+    },
+  },
+  {
+    slug: "infrastructure",
+    title: { mn: "Дэд бүтэц", en: "Infrastructure Development" },
+    summary: {
+      mn: "Зам, гүүр, инженерийн шугам сүлжээ, нийтийн үйлчилгээний байгууламж.",
+      en: "Roads, bridges, utility networks, and public service facilities.",
+    },
+    features: {
+      mn: ["Судалгаа", "Инженерийн шийдэл", "Угсралт", "Туршилт", "Хяналт"],
+      en: ["Surveys", "Engineering solutions", "Assembly", "Testing", "Supervision"],
+    },
+  },
+  {
+    slug: "architecture",
+    title: { mn: "Архитектурын зураг төсөл", en: "Architectural Design" },
+    summary: {
+      mn: "Концепцээс эхлэн ажлын зураг хүртэлх бүх үе шат.",
+      en: "Every stage from concept through construction documentation.",
+    },
+    features: {
+      mn: ["Концепц дизайн", "3D визуал", "Ажлын зураг", "BIM шийдэл", "Барилгын зөвшөөрөл"],
+      en: ["Concept design", "3D visualisation", "Working drawings", "BIM solutions", "Building permits"],
+    },
+  },
+  {
+    slug: "interior",
+    title: { mn: "Дотоод засал", en: "Interior Design" },
+    summary: {
+      mn: "Интерьер дизайн, материал сонголт, төслийн хэрэгжилт.",
+      en: "Interior design, material selection, and project execution.",
+    },
+    features: {
+      mn: ["Интерьер концепц", "Материал сонголт", "Тавилгын төлөвлөлт", "Гүйцэтгэл", "Хяналт"],
+      en: ["Interior concept", "Material selection", "Furniture planning", "Delivery", "Supervision"],
+    },
+  },
+  {
+    slug: "engineering",
+    title: { mn: "Инженерийн зөвлөгөө", en: "Engineering Consulting" },
+    summary: {
+      mn: "Бүтээц, цахилгаан, механик, сантехник болон хяналтын зөвлөх үйлчилгээ.",
+      en: "Structural, electrical, mechanical, plumbing, and supervision consulting.",
+    },
+    features: {
+      mn: ["Техникийн үнэлгээ", "Инженерийн зөвлөгөө", "Эрсдэлийн үнэлгээ", "Хяналт", "Тайлагнал"],
+      en: ["Technical assessment", "Engineering consulting", "Risk assessment", "Supervision", "Reporting"],
+    },
+  },
 ];
 
 export interface NewsPost {
@@ -227,7 +288,7 @@ export const partners = [
 
 export const stats = [
   { value: 15, suffix: "+", label: { mn: "Жилийн туршлага", en: "Years of experience" } },
-  { value: 5, suffix: "", label: { mn: "Блок · AMGALAN RESIDENCE", en: "Blocks · AMGALAN RESIDENCE" } },
-  { value: 800, suffix: "+", label: { mn: "Мэргэжилтэн", en: "Professionals" } },
-  { value: 100, suffix: "%", label: { mn: "Цутгамал төмөр бетон", en: "Cast-in-place concrete" } },
+  { value: 120, suffix: "+", label: { mn: "Хэрэгжүүлсэн төсөл", en: "Completed projects" } },
+  { value: 500, suffix: "+", label: { mn: "Мэргэжлийн баг", en: "Professional team" } },
+  { value: 100, suffix: "%", label: { mn: "Үйлчлүүлэгчийн сэтгэл ханамж", en: "Client satisfaction" } },
 ];
