@@ -4,7 +4,6 @@ import { Footer } from "@/components/site/Footer";
 import { PageHero } from "@/components/site/PageHero";
 import { Reveal } from "@/components/site/Reveal";
 import { t, type Locale } from "@/lib/i18n";
-import { team } from "@/lib/content";
 import aboutImg from "@/assets/about-cover.jpg";
 
 export const Route = createFileRoute("/$lang/about")({
@@ -91,27 +90,6 @@ function AboutPage() {
               <Reveal key={t1.year} delay={i * 0.05}>
                 <p className="display text-5xl md:text-6xl text-accent">{t1.year}</p>
                 <p className="mt-4 text-base text-foreground/85 leading-relaxed">{l === "mn" ? t1.mn : t1.en}</p>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Team */}
-      <section className="py-24 md:py-32">
-        <div className="container-x">
-          <p className="eyebrow text-muted-foreground mb-4">{tr.about.team}</p>
-          <h2 className="display text-3xl md:text-5xl mb-16">
-            {l === "mn" ? "Удирдлагын баг." : "The leadership."}
-          </h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {team.map((m, i) => (
-              <Reveal key={m.name} delay={i * 0.05}>
-                <div className="aspect-[3/4] bg-surface flex items-end p-6 border border-hairline">
-                  <span className="display text-6xl md:text-7xl text-foreground/15">{m.initials}</span>
-                </div>
-                <p className="mt-5 text-base font-medium">{m.name}</p>
-                <p className="text-sm text-muted-foreground mt-1">{m.role[l]}</p>
               </Reveal>
             ))}
           </div>

@@ -107,7 +107,15 @@
     scroll-behavior: smooth;
   }
   body {
-    background-color: var(--color-background);
+    background-color: oklch(0.992 0.004 92);
+    background-image:
+      radial-gradient(circle at 20% 10%, oklch(1 0 0 / 0.85), transparent 34rem),
+      radial-gradient(circle at 82% 18%, oklch(0.765 0.125 84 / 0.08), transparent 28rem),
+      linear-gradient(90deg, oklch(0.16 0.005 270 / 0.035) 1px, transparent 1px),
+      linear-gradient(0deg, oklch(0.16 0.005 270 / 0.025) 1px, transparent 1px),
+      radial-gradient(circle, oklch(0.16 0.005 270 / 0.055) 0 0.6px, transparent 0.8px);
+    background-size: auto, auto, 96px 96px, 96px 96px, 5px 5px;
+    background-attachment: fixed;
     color: var(--color-foreground);
     font-family: var(--font-sans);
     font-feature-settings: "ss01", "cv11";

@@ -7,8 +7,9 @@ import { Reveal } from "@/components/site/Reveal";
 import { t, type Locale } from "@/lib/i18n";
 import communityImg from "@/assets/project-residential.jpg";
 import environmentImg from "@/assets/project-infrastructure.jpg";
-import sportImg from "@/assets/project-office.jpg";
 import safetyImg from "@/assets/project-industrial.jpg";
+
+const sportImg = "/pirates-sport-management.svg";
 
 export const Route = createFileRoute("/$lang/social-duty")({
   head: ({ params }) => {
@@ -63,6 +64,9 @@ function SocialDutyPage() {
       stat: l === "mn" ? "Орон нутгийн хамтын ажиллагаа" : "Local partnerships",
     },
   ];
+  const sportStats = l === "mn"
+    ? ["2017 оноос хойш үйл ажиллагаа", "Олон удаагийн аварга баг", "Эмэгтэй сагсан бөмбөгийн хөгжилд хувь нэмэр"]
+    : ["Active since 2017", "Multiple-time champion team", "Contributing to women's basketball"];
 
   return (
     <>
@@ -143,25 +147,40 @@ function SocialDutyPage() {
         </div>
       </section>
 
-      <section id="sport" className="scroll-mt-24 py-20 md:py-28 bg-foreground text-background">
-        <div className="container-x grid md:grid-cols-12 gap-10 items-center">
-          <Reveal className="md:col-span-6">
-            <img
-              src={sportImg}
-              alt=""
-              loading="lazy"
-              className="aspect-[4/3] w-full object-cover opacity-85"
-            />
-          </Reveal>
-          <Reveal delay={0.1} className="md:col-span-5 md:col-start-8">
-            <p className="eyebrow text-accent mb-4">{tr.socialDuty.sport}</p>
-            <h2 className="display text-3xl md:text-5xl text-background">
-              {l === "mn" ? "Багийн спорт, багийн соёл." : "Team sport, team culture."}
-            </h2>
-            <p className="mt-6 text-background/70 leading-relaxed">
-              {tr.socialDuty.sportBody}
-            </p>
-          </Reveal>
+      <section id="sport" className="scroll-mt-24 bg-[#05070A] text-white">
+        <div className="container-x py-20 md:py-28 xl:py-36">
+          <div className="grid gap-12 lg:grid-cols-[minmax(0,3fr)_minmax(360px,2fr)] lg:items-center xl:gap-16">
+            <Reveal>
+              <div className="relative overflow-hidden bg-white/5">
+                <img
+                  src={sportImg}
+                  alt={l === "mn" ? "PIRATES сагсан бөмбөгийн баг" : "PIRATES Basketball Club team"}
+                  loading="lazy"
+                  className="aspect-[16/10] w-full object-cover opacity-90 saturate-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-tr from-[#05070A]/30 via-transparent to-[#D4AF37]/10" />
+              </div>
+            </Reveal>
+            <Reveal delay={0.12}>
+              <div className="lg:py-10">
+                <p className="eyebrow text-accent mb-5">{tr.socialDuty.sport}</p>
+                <h2 className="display text-4xl md:text-6xl xl:text-7xl text-white">
+                  {l === "mn" ? "Багийн спорт, багийн соёл." : "Team sport, team culture."}
+                </h2>
+                <p className="mt-8 text-base md:text-lg text-white/70 leading-relaxed">
+                  {tr.socialDuty.sportBody}
+                </p>
+                <div className="mt-12 grid gap-4 border-t border-white/10 pt-8">
+                  {sportStats.map((stat) => (
+                    <p key={stat} className="flex items-center gap-3 text-sm text-white/75">
+                      <span className="h-1.5 w-1.5 bg-accent" aria-hidden />
+                      {stat}
+                    </p>
+                  ))}
+                </div>
+              </div>
+            </Reveal>
+          </div>
         </div>
       </section>
 

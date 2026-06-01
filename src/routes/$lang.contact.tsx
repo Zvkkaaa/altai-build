@@ -38,7 +38,7 @@ function ContactPage() {
         <div className="container-x grid md:grid-cols-12 gap-16">
           <Reveal className="md:col-span-5 space-y-12">
             {[
-              { label: tr.contact.office, value: l === "mn" ? "Сүхбаатар дүүрэг, 1-р хороо\nЭлчингийн гудамж, \"SAV\" оффис, 8 давхар, 806 тоот\nУлаанбаатар, Монгол" : "SAV Office, 8th floor #806\nElchingiin Street, 1st khoroo, Sukhbaatar District\nUlaanbaatar, Mongolia" },
+              { label: tr.contact.office, value: l === "mn" ? "БЗД, 8-р хороо\nAmgalan Residence\nУлаанбаатар, Монгол" : "Amgalan Residence\n8th khoroo, Bayanzurkh District\nUlaanbaatar, Mongolia" },
               { label: tr.contact.phone, value: "+976 9507-7733\n+976 9507-9955\n+976 7609-7777" },
               { label: tr.contact.email, value: "info@hussenzug.mn\nsales@amgalanresidence.mn" },
               { label: tr.contact.hours, value: l === "mn" ? "Даваа – Баасан · 09:00 – 18:00\nБямба · 10:00 – 14:00" : "Mon – Fri · 09:00 – 18:00\nSat · 10:00 – 14:00" },
@@ -85,7 +85,7 @@ function ContactPage() {
         <div className="aspect-[21/9] w-full bg-surface relative overflow-hidden">
           <iframe
             title="Office location"
-            src="https://www.openstreetmap.org/export/embed.html?bbox=106.91%2C47.91%2C106.93%2C47.93&layer=mapnik"
+            src="https://www.openstreetmap.org/export/embed.html?bbox=106.965%2C47.905%2C107.015%2C47.935&layer=mapnik"
             className="w-full h-full grayscale"
             loading="lazy"
           />

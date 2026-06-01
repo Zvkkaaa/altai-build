@@ -5,7 +5,7 @@ import { Footer } from "@/components/site/Footer";
 import { Reveal } from "@/components/site/Reveal";
 import { Counter } from "@/components/site/Counter";
 import { t, type Locale } from "@/lib/i18n";
-import { projects, services, news, testimonials, stats, partners } from "@/lib/content";
+import { projects, services, news, stats, partners } from "@/lib/content";
 import heroImg from "@/assets/amgalan-residence-towers.jpg";
 
 export const Route = createFileRoute("/$lang/")({
@@ -247,33 +247,36 @@ function HomePage() {
         </div>
       </section>
 
-      {/* TESTIMONIALS */}
-      <section className="py-24 md:py-32 bg-surface border-y border-hairline">
-        <div className="container-x">
-          <p className="eyebrow text-muted-foreground mb-12">{tr.home.testimonials}</p>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-14">
-            {testimonials.map((t2, i) => (
-              <Reveal key={i} delay={i * 0.08}>
-                <p className="text-xl md:text-2xl font-medium leading-snug tracking-tight">
-                  "{t2.quote[l]}"
-                </p>
-                <div className="mt-8 pt-6 border-t border-hairline">
-                  <p className="text-sm font-medium">{t2.author}</p>
-                  <p className="text-xs text-muted-foreground mt-1">{t2.org[l]}</p>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* PARTNERS */}
-      <section className="py-20">
+      <section className="py-20 md:py-28">
         <div className="container-x">
           <p className="eyebrow text-muted-foreground text-center mb-10">{tr.home.partners}</p>
-          <div className="flex flex-wrap items-center justify-center gap-x-12 gap-y-6 text-foreground/40">
-            {partners.map((p) => (
-              <span key={p} className="text-lg md:text-xl font-medium tracking-tight">{p}</span>
+          <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-center gap-x-10 gap-y-8 md:gap-x-14 md:gap-y-10">
+            {partners.map((p, i) => (
+              <div
+                key={p.name}
+                className="flex h-16 min-w-28 items-center justify-center"
+              >
+                <img
+                  src={p.logo}
+                  alt={p.name}
+                  loading="lazy"
+                  onError={(event) => {
+                    event.currentTarget.hidden = true;
+                    const fallback = event.currentTarget.nextElementSibling;
+                    if (fallback instanceof HTMLElement) fallback.hidden = false;
+                  }}
+                  className={`max-h-12 w-auto max-w-40 object-contain opacity-75 grayscale transition duration-300 hover:opacity-100 hover:grayscale-0 ${
+                    p.featured ? "max-h-14 max-w-48" : i % 4 === 0 ? "max-h-14" : ""
+                  }`}
+                />
+                <span
+                  hidden
+                  className="text-center text-base font-semibold tracking-tight text-foreground/35 md:text-lg"
+                >
+                  {p.name}
+                </span>
+              </div>
             ))}
           </div>
         </div>

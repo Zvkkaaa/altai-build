@@ -283,7 +283,28 @@ export const jobs: JobPost[] = [
 ];
 
 export const partners = [
-  "Oyu Tolgoi", "NBIK", "Jacobs", "Samsung", "LG Hausys", "Shangri-La", "Worley", "Golomt Bank", "Wagner CAT", "Bayan Airag", "MMSE", "Steppe Arena",
+  { name: "NBIK", logo: "/partner-logos/nbik.png", featured: true },
+  { name: "Oyu Tolgoi", logo: "/partner-logos/oyu-tolgoi.png" },
+  { name: "MMSE", logo: "/partner-logos/mmse.png" },
+  { name: "Jacobs", logo: "/partner-logos/jacobs.png" },
+  { name: "Bayan Airag", logo: "/partner-logos/bayan-airag.png" },
+  { name: "Хасу Мегаватт", logo: "/partner-logos/khasu-megawatt.png" },
+  { name: "Golomt Bank", logo: "/partner-logos/golomt-bank.png" },
+  { name: "HLB", logo: "/partner-logos/hlb.png" },
+  { name: "Мандал Даатгал", logo: "/partner-logos/mandal-daatgal.png" },
+  { name: "Samsung", logo: "/partner-logos/samsung.png" },
+  { name: "Monadelphous", logo: "/partner-logos/monadelphous.png" },
+  { name: "LG Hausys", logo: "/partner-logos/lg-hausys.png" },
+  { name: "Steppe Arena", logo: "/partner-logos/steppe-arena.png" },
+  { name: "Wave", logo: "/partner-logos/wave.png" },
+  { name: "Shangri-La", logo: "/partner-logos/shangri-la.png" },
+  { name: "Dayan Contract Mining", logo: "/partner-logos/dayan-contract-mining.png" },
+  { name: "Worley", logo: "/partner-logos/worley.png" },
+  { name: "Wagner CAT", logo: "/partner-logos/wagner-cat.png" },
+  { name: "Global Auto Rental", logo: "/partner-logos/global-auto-rental.png" },
+  { name: "Alimak", logo: "/partner-logos/alimak.png" },
+  { name: "Huawei", logo: "/partner-logos/huawei.png" },
+  { name: "MSM", logo: "/partner-logos/msm.png" },
 ];
 
 export const stats = [
