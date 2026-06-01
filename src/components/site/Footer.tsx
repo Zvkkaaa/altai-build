@@ -37,6 +37,7 @@ export function Footer() {
                 ["/about", tr.nav.about],
                 ["/services", tr.nav.services],
                 ["/projects", tr.nav.projects],
+                ["/gallery", tr.nav.gallery],
                 ["/news", tr.nav.news],
                 ["/social-duty", tr.nav.socialDuty],
                 ["/careers", tr.nav.careers],

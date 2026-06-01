@@ -17,6 +17,7 @@ import { Route as LangSocialDutyRouteImport } from './routes/$lang.social-duty'
 import { Route as LangServicesRouteImport } from './routes/$lang.services'
 import { Route as LangProjectsRouteImport } from './routes/$lang.projects'
 import { Route as LangNewsRouteImport } from './routes/$lang.news'
+import { Route as LangGalleryRouteImport } from './routes/$lang.gallery'
 import { Route as LangContactRouteImport } from './routes/$lang.contact'
 import { Route as LangCareersRouteImport } from './routes/$lang.careers'
 import { Route as LangAboutRouteImport } from './routes/$lang.about'
@@ -61,6 +62,11 @@ const LangNewsRoute = LangNewsRouteImport.update({
   path: '/news',
   getParentRoute: () => LangRoute,
 } as any)
+const LangGalleryRoute = LangGalleryRouteImport.update({
+  id: '/gallery',
+  path: '/gallery',
+  getParentRoute: () => LangRoute,
+} as any)
 const LangContactRoute = LangContactRouteImport.update({
   id: '/contact',
   path: '/contact',
@@ -84,6 +90,7 @@ export interface FileRoutesByFullPath {
   '/$lang/about': typeof LangAboutRoute
   '/$lang/careers': typeof LangCareersRoute
   '/$lang/contact': typeof LangContactRoute
+  '/$lang/gallery': typeof LangGalleryRoute
   '/$lang/news': typeof LangNewsRoute
   '/$lang/projects': typeof LangProjectsRoute
   '/$lang/services': typeof LangServicesRoute
@@ -96,6 +103,7 @@ export interface FileRoutesByTo {
   '/$lang/about': typeof LangAboutRoute
   '/$lang/careers': typeof LangCareersRoute
   '/$lang/contact': typeof LangContactRoute
+  '/$lang/gallery': typeof LangGalleryRoute
   '/$lang/news': typeof LangNewsRoute
   '/$lang/projects': typeof LangProjectsRoute
   '/$lang/services': typeof LangServicesRoute
@@ -110,6 +118,7 @@ export interface FileRoutesById {
   '/$lang/about': typeof LangAboutRoute
   '/$lang/careers': typeof LangCareersRoute
   '/$lang/contact': typeof LangContactRoute
+  '/$lang/gallery': typeof LangGalleryRoute
   '/$lang/news': typeof LangNewsRoute
   '/$lang/projects': typeof LangProjectsRoute
   '/$lang/services': typeof LangServicesRoute
@@ -125,6 +134,7 @@ export interface FileRouteTypes {
     | '/$lang/about'
     | '/$lang/careers'
     | '/$lang/contact'
+    | '/$lang/gallery'
     | '/$lang/news'
     | '/$lang/projects'
     | '/$lang/services'
@@ -137,6 +147,7 @@ export interface FileRouteTypes {
     | '/$lang/about'
     | '/$lang/careers'
     | '/$lang/contact'
+    | '/$lang/gallery'
     | '/$lang/news'
     | '/$lang/projects'
     | '/$lang/services'
@@ -150,6 +161,7 @@ export interface FileRouteTypes {
     | '/$lang/about'
     | '/$lang/careers'
     | '/$lang/contact'
+    | '/$lang/gallery'
     | '/$lang/news'
     | '/$lang/projects'
     | '/$lang/services'
@@ -221,6 +233,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LangNewsRouteImport
       parentRoute: typeof LangRoute
     }
+    '/$lang/gallery': {
+      id: '/$lang/gallery'
+      path: '/gallery'
+      fullPath: '/$lang/gallery'
+      preLoaderRoute: typeof LangGalleryRouteImport
+      parentRoute: typeof LangRoute
+    }
     '/$lang/contact': {
       id: '/$lang/contact'
       path: '/contact'
@@ -249,6 +268,7 @@ interface LangRouteChildren {
   LangAboutRoute: typeof LangAboutRoute
   LangCareersRoute: typeof LangCareersRoute
   LangContactRoute: typeof LangContactRoute
+  LangGalleryRoute: typeof LangGalleryRoute
   LangNewsRoute: typeof LangNewsRoute
   LangProjectsRoute: typeof LangProjectsRoute
   LangServicesRoute: typeof LangServicesRoute
@@ -260,6 +280,7 @@ const LangRouteChildren: LangRouteChildren = {
   LangAboutRoute: LangAboutRoute,
   LangCareersRoute: LangCareersRoute,
   LangContactRoute: LangContactRoute,
+  LangGalleryRoute: LangGalleryRoute,
   LangNewsRoute: LangNewsRoute,
   LangProjectsRoute: LangProjectsRoute,
   LangServicesRoute: LangServicesRoute,
@@ -277,3 +298,13 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
