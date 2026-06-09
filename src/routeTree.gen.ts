@@ -13,14 +13,12 @@ import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as LangRouteImport } from './routes/$lang'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as LangIndexRouteImport } from './routes/$lang.index'
-import { Route as LangSocialDutyRouteImport } from './routes/$lang.social-duty'
-import { Route as LangServicesRouteImport } from './routes/$lang.services'
 import { Route as LangProjectsRouteImport } from './routes/$lang.projects'
 import { Route as LangNewsRouteImport } from './routes/$lang.news'
-import { Route as LangGalleryRouteImport } from './routes/$lang.gallery'
 import { Route as LangContactRouteImport } from './routes/$lang.contact'
-import { Route as LangCareersRouteImport } from './routes/$lang.careers'
 import { Route as LangAboutRouteImport } from './routes/$lang.about'
+import { Route as LangServicesIndexRouteImport } from './routes/$lang.services.index'
+import { Route as LangServicesSlugRouteImport } from './routes/$lang.services.$slug'
 
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
@@ -42,16 +40,6 @@ const LangIndexRoute = LangIndexRouteImport.update({
   path: '/',
   getParentRoute: () => LangRoute,
 } as any)
-const LangSocialDutyRoute = LangSocialDutyRouteImport.update({
-  id: '/social-duty',
-  path: '/social-duty',
-  getParentRoute: () => LangRoute,
-} as any)
-const LangServicesRoute = LangServicesRouteImport.update({
-  id: '/services',
-  path: '/services',
-  getParentRoute: () => LangRoute,
-} as any)
 const LangProjectsRoute = LangProjectsRouteImport.update({
   id: '/projects',
   path: '/projects',
@@ -62,24 +50,24 @@ const LangNewsRoute = LangNewsRouteImport.update({
   path: '/news',
   getParentRoute: () => LangRoute,
 } as any)
-const LangGalleryRoute = LangGalleryRouteImport.update({
-  id: '/gallery',
-  path: '/gallery',
-  getParentRoute: () => LangRoute,
-} as any)
 const LangContactRoute = LangContactRouteImport.update({
   id: '/contact',
   path: '/contact',
   getParentRoute: () => LangRoute,
 } as any)
-const LangCareersRoute = LangCareersRouteImport.update({
-  id: '/careers',
-  path: '/careers',
-  getParentRoute: () => LangRoute,
-} as any)
 const LangAboutRoute = LangAboutRouteImport.update({
   id: '/about',
   path: '/about',
+  getParentRoute: () => LangRoute,
+} as any)
+const LangServicesIndexRoute = LangServicesIndexRouteImport.update({
+  id: '/services/',
+  path: '/services/',
+  getParentRoute: () => LangRoute,
+} as any)
+const LangServicesSlugRoute = LangServicesSlugRouteImport.update({
+  id: '/services/$slug',
+  path: '/services/$slug',
   getParentRoute: () => LangRoute,
 } as any)
 
@@ -88,27 +76,23 @@ export interface FileRoutesByFullPath {
   '/$lang': typeof LangRouteWithChildren
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/$lang/about': typeof LangAboutRoute
-  '/$lang/careers': typeof LangCareersRoute
   '/$lang/contact': typeof LangContactRoute
-  '/$lang/gallery': typeof LangGalleryRoute
   '/$lang/news': typeof LangNewsRoute
   '/$lang/projects': typeof LangProjectsRoute
-  '/$lang/services': typeof LangServicesRoute
-  '/$lang/social-duty': typeof LangSocialDutyRoute
   '/$lang/': typeof LangIndexRoute
+  '/$lang/services/$slug': typeof LangServicesSlugRoute
+  '/$lang/services/': typeof LangServicesIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/$lang/about': typeof LangAboutRoute
-  '/$lang/careers': typeof LangCareersRoute
   '/$lang/contact': typeof LangContactRoute
-  '/$lang/gallery': typeof LangGalleryRoute
   '/$lang/news': typeof LangNewsRoute
   '/$lang/projects': typeof LangProjectsRoute
-  '/$lang/services': typeof LangServicesRoute
-  '/$lang/social-duty': typeof LangSocialDutyRoute
   '/$lang': typeof LangIndexRoute
+  '/$lang/services/$slug': typeof LangServicesSlugRoute
+  '/$lang/services': typeof LangServicesIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -116,14 +100,12 @@ export interface FileRoutesById {
   '/$lang': typeof LangRouteWithChildren
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/$lang/about': typeof LangAboutRoute
-  '/$lang/careers': typeof LangCareersRoute
   '/$lang/contact': typeof LangContactRoute
-  '/$lang/gallery': typeof LangGalleryRoute
   '/$lang/news': typeof LangNewsRoute
   '/$lang/projects': typeof LangProjectsRoute
-  '/$lang/services': typeof LangServicesRoute
-  '/$lang/social-duty': typeof LangSocialDutyRoute
   '/$lang/': typeof LangIndexRoute
+  '/$lang/services/$slug': typeof LangServicesSlugRoute
+  '/$lang/services/': typeof LangServicesIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -132,41 +114,35 @@ export interface FileRouteTypes {
     | '/$lang'
     | '/sitemap.xml'
     | '/$lang/about'
-    | '/$lang/careers'
     | '/$lang/contact'
-    | '/$lang/gallery'
     | '/$lang/news'
     | '/$lang/projects'
-    | '/$lang/services'
-    | '/$lang/social-duty'
     | '/$lang/'
+    | '/$lang/services/$slug'
+    | '/$lang/services/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/sitemap.xml'
     | '/$lang/about'
-    | '/$lang/careers'
     | '/$lang/contact'
-    | '/$lang/gallery'
     | '/$lang/news'
     | '/$lang/projects'
-    | '/$lang/services'
-    | '/$lang/social-duty'
     | '/$lang'
+    | '/$lang/services/$slug'
+    | '/$lang/services'
   id:
     | '__root__'
     | '/'
     | '/$lang'
     | '/sitemap.xml'
     | '/$lang/about'
-    | '/$lang/careers'
     | '/$lang/contact'
-    | '/$lang/gallery'
     | '/$lang/news'
     | '/$lang/projects'
-    | '/$lang/services'
-    | '/$lang/social-duty'
     | '/$lang/'
+    | '/$lang/services/$slug'
+    | '/$lang/services/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -205,20 +181,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LangIndexRouteImport
       parentRoute: typeof LangRoute
     }
-    '/$lang/social-duty': {
-      id: '/$lang/social-duty'
-      path: '/social-duty'
-      fullPath: '/$lang/social-duty'
-      preLoaderRoute: typeof LangSocialDutyRouteImport
-      parentRoute: typeof LangRoute
-    }
-    '/$lang/services': {
-      id: '/$lang/services'
-      path: '/services'
-      fullPath: '/$lang/services'
-      preLoaderRoute: typeof LangServicesRouteImport
-      parentRoute: typeof LangRoute
-    }
     '/$lang/projects': {
       id: '/$lang/projects'
       path: '/projects'
@@ -233,25 +195,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LangNewsRouteImport
       parentRoute: typeof LangRoute
     }
-    '/$lang/gallery': {
-      id: '/$lang/gallery'
-      path: '/gallery'
-      fullPath: '/$lang/gallery'
-      preLoaderRoute: typeof LangGalleryRouteImport
-      parentRoute: typeof LangRoute
-    }
     '/$lang/contact': {
       id: '/$lang/contact'
       path: '/contact'
       fullPath: '/$lang/contact'
       preLoaderRoute: typeof LangContactRouteImport
-      parentRoute: typeof LangRoute
-    }
-    '/$lang/careers': {
-      id: '/$lang/careers'
-      path: '/careers'
-      fullPath: '/$lang/careers'
-      preLoaderRoute: typeof LangCareersRouteImport
       parentRoute: typeof LangRoute
     }
     '/$lang/about': {
@@ -261,31 +209,41 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LangAboutRouteImport
       parentRoute: typeof LangRoute
     }
+    '/$lang/services/': {
+      id: '/$lang/services/'
+      path: '/services'
+      fullPath: '/$lang/services/'
+      preLoaderRoute: typeof LangServicesIndexRouteImport
+      parentRoute: typeof LangRoute
+    }
+    '/$lang/services/$slug': {
+      id: '/$lang/services/$slug'
+      path: '/services/$slug'
+      fullPath: '/$lang/services/$slug'
+      preLoaderRoute: typeof LangServicesSlugRouteImport
+      parentRoute: typeof LangRoute
+    }
   }
 }
 
 interface LangRouteChildren {
   LangAboutRoute: typeof LangAboutRoute
-  LangCareersRoute: typeof LangCareersRoute
   LangContactRoute: typeof LangContactRoute
-  LangGalleryRoute: typeof LangGalleryRoute
   LangNewsRoute: typeof LangNewsRoute
   LangProjectsRoute: typeof LangProjectsRoute
-  LangServicesRoute: typeof LangServicesRoute
-  LangSocialDutyRoute: typeof LangSocialDutyRoute
   LangIndexRoute: typeof LangIndexRoute
+  LangServicesSlugRoute: typeof LangServicesSlugRoute
+  LangServicesIndexRoute: typeof LangServicesIndexRoute
 }
 
 const LangRouteChildren: LangRouteChildren = {
   LangAboutRoute: LangAboutRoute,
-  LangCareersRoute: LangCareersRoute,
   LangContactRoute: LangContactRoute,
-  LangGalleryRoute: LangGalleryRoute,
   LangNewsRoute: LangNewsRoute,
   LangProjectsRoute: LangProjectsRoute,
-  LangServicesRoute: LangServicesRoute,
-  LangSocialDutyRoute: LangSocialDutyRoute,
   LangIndexRoute: LangIndexRoute,
+  LangServicesSlugRoute: LangServicesSlugRoute,
+  LangServicesIndexRoute: LangServicesIndexRoute,
 }
 
 const LangRouteWithChildren = LangRoute._addFileChildren(LangRouteChildren)
@@ -298,13 +256,3 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}

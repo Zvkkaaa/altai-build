@@ -6,12 +6,15 @@ import projectInfra from "@/assets/project-infrastructure.jpg";
 import projectIndustrial from "@/assets/project-industrial.jpg";
 import projectGov from "@/assets/project-government.jpg";
 import projectLuxury from "@/assets/project-luxury.jpg";
+import projectResidential from "@/assets/project-residential.jpg";
+import heroConstruction from "@/assets/hero-construction.jpg";
 import amgalanHero from "@/assets/amgalan-residence-hero.jpg";
 import amgalanTowers from "@/assets/amgalan-residence-towers.jpg";
 import amgalanMasterplan from "@/assets/amgalan-residence-masterplan.jpg";
 import amgalanAmenities from "@/assets/amgalan-residence-amenities.jpg";
 import amgalanInterior from "@/assets/amgalan-residence-interior.jpg";
 import amgalanLocation from "@/assets/amgalan-residence-location.jpg";
+import amgalanSecurity from "@/assets/amgalan-residence-security.jpg";
 import news1 from "@/assets/news-1.jpg";
 import news2 from "@/assets/news-2.jpg";
 import news3 from "@/assets/news-3.jpg";
@@ -33,7 +36,7 @@ export interface Project {
 }
 
 export const amgalanGallery = [
-  amgalanHero, amgalanTowers, amgalanMasterplan, amgalanAmenities, amgalanInterior, amgalanLocation,
+  amgalanHero, amgalanTowers, amgalanMasterplan, amgalanAmenities, amgalanInterior, amgalanLocation, amgalanSecurity,
 ];
 
 export const projects: Project[] = [
@@ -110,6 +113,8 @@ export interface Service {
   title: L<string>;
   summary: L<string>;
   features: L<string[]>;
+  image: string;
+  gallery?: string[];
 }
 
 export const services: Service[] = [
@@ -117,73 +122,150 @@ export const services: Service[] = [
     slug: "residential",
     title: { mn: "Орон сууцны барилга", en: "Residential Construction" },
     summary: {
-      mn: "Олон давхар орон сууц, хотхон, цогцолбор, иргэний зориулалттай барилгын зураг төсөл, гүйцэтгэл, хяналтын үйлчилгээ.",
-      en: "Design, delivery, and supervision of multi-storey residential blocks, complexes, and civil buildings.",
+      mn: "Олон давхар орон сууц, хотхон, цогцолбор, иргэний барилгын зураг төсөл, гүйцэтгэл, хяналт.",
+      en: "Design, delivery and supervision of multi-storey residential blocks and civil buildings.",
     },
     features: {
       mn: ["Техникийн нөхцөл, судалгаа", "Архитектурын зураг төсөл", "Барилгын угсралт", "Чанарын хяналт", "Ашиглалтад хүлээлгэн өгөх"],
-      en: ["Technical conditions & feasibility", "Architectural design", "Construction & assembly", "Quality control", "Handover & commissioning"],
+      en: ["Technical feasibility", "Architectural design", "Construction & assembly", "Quality control", "Handover & commissioning"],
     },
+    image: amgalanTowers,
+    gallery: [amgalanHero, amgalanInterior, amgalanAmenities],
   },
   {
     slug: "commercial",
     title: { mn: "Арилжааны барилга", en: "Commercial Construction" },
     summary: {
-      mn: "Оффис, худалдааны төв, үйлчилгээний төв, бизнесийн барилгын иж бүрэн шийдэл.",
-      en: "End-to-end delivery of offices, retail centres, service hubs, and business buildings.",
+      mn: "Оффис, худалдааны төв, үйлчилгээний цогцолборын иж бүрэн шийдэл.",
+      en: "End-to-end delivery of offices, retail centres and service hubs.",
     },
     features: {
-      mn: ["Судалгаа", "Концепц төлөвлөлт", "Төсөв", "Барилгын менежмент", "Хяналт"],
-      en: ["Feasibility studies", "Concept planning", "Cost estimation", "Construction management", "Supervision"],
+      mn: ["Концепц төлөвлөлт", "Төсөв", "Барилгын менежмент", "Дотоод засал", "Хүлээлгэн өгөх"],
+      en: ["Concept planning", "Cost estimation", "Construction management", "Interior fit-out", "Handover"],
     },
+    image: projectOffice,
+    gallery: [projectLuxury, projectGov],
   },
   {
     slug: "infrastructure",
-    title: { mn: "Дэд бүтэц", en: "Infrastructure Development" },
+    title: { mn: "Дэд бүтэц", en: "Infrastructure" },
     summary: {
       mn: "Зам, гүүр, инженерийн шугам сүлжээ, нийтийн үйлчилгээний байгууламж.",
-      en: "Roads, bridges, utility networks, and public service facilities.",
+      en: "Roads, bridges, utility networks and public service facilities.",
     },
     features: {
-      mn: ["Судалгаа", "Инженерийн шийдэл", "Угсралт", "Туршилт", "Хяналт"],
-      en: ["Surveys", "Engineering solutions", "Assembly", "Testing", "Supervision"],
+      mn: ["Судалгаа, төлөвлөлт", "Инженерийн шийдэл", "Угсралт", "Туршилт", "Хяналт"],
+      en: ["Surveys & planning", "Engineering solutions", "Assembly", "Testing", "Supervision"],
     },
+    image: projectInfra,
+    gallery: [projectIndustrial, projectGov],
   },
   {
     slug: "architecture",
     title: { mn: "Архитектурын зураг төсөл", en: "Architectural Design" },
     summary: {
-      mn: "Концепцээс эхлэн ажлын зураг хүртэлх бүх үе шат.",
+      mn: "Концепцээс эхлэн ажлын зураг хүртэлх архитектурын бүх үе шат.",
       en: "Every stage from concept through construction documentation.",
     },
     features: {
       mn: ["Концепц дизайн", "3D визуал", "Ажлын зураг", "BIM шийдэл", "Барилгын зөвшөөрөл"],
       en: ["Concept design", "3D visualisation", "Working drawings", "BIM solutions", "Building permits"],
     },
+    image: amgalanMasterplan,
+    gallery: [amgalanLocation, amgalanInterior],
   },
   {
-    slug: "interior",
-    title: { mn: "Дотоод засал", en: "Interior Design" },
+    slug: "construction-assembly",
+    title: { mn: "Барилга угсралт", en: "Construction & Assembly" },
     summary: {
-      mn: "Интерьер дизайн, материал сонголт, төслийн хэрэгжилт.",
-      en: "Interior design, material selection, and project execution.",
+      mn: "Цутгамал төмөр бетон, металл бүтээц, угсармал бүтээцийн иж бүрэн угсралт.",
+      en: "Reinforced concrete, steel and precast structural assembly to international standards.",
     },
     features: {
-      mn: ["Интерьер концепц", "Материал сонголт", "Тавилгын төлөвлөлт", "Гүйцэтгэл", "Хяналт"],
-      en: ["Interior concept", "Material selection", "Furniture planning", "Delivery", "Supervision"],
+      mn: ["Суурийн ажил", "Каркасын угсралт", "Хана, дам нуруу", "Хучилт, дээвэр", "Гадна засал"],
+      en: ["Foundations", "Frame assembly", "Walls & beams", "Slabs & roofing", "Façade works"],
     },
+    image: heroConstruction,
+    gallery: [projectResidential, projectIndustrial],
   },
   {
-    slug: "engineering",
+    slug: "engineering-consulting",
     title: { mn: "Инженерийн зөвлөгөө", en: "Engineering Consulting" },
     summary: {
       mn: "Бүтээц, цахилгаан, механик, сантехник болон хяналтын зөвлөх үйлчилгээ.",
-      en: "Structural, electrical, mechanical, plumbing, and supervision consulting.",
+      en: "Structural, electrical, mechanical, plumbing and supervision consulting.",
     },
     features: {
       mn: ["Техникийн үнэлгээ", "Инженерийн зөвлөгөө", "Эрсдэлийн үнэлгээ", "Хяналт", "Тайлагнал"],
       en: ["Technical assessment", "Engineering consulting", "Risk assessment", "Supervision", "Reporting"],
     },
+    image: news1,
+    gallery: [news2, news3],
+  },
+  {
+    slug: "supply",
+    title: { mn: "Хангамж", en: "Supply" },
+    summary: {
+      mn: "Барилгын материал, тоног төхөөрөмж, сэлбэг хэрэгслийн нийлүүлэлт.",
+      en: "Supply of construction materials, equipment and spare parts.",
+    },
+    features: {
+      mn: ["Бетон, цемент", "Металл бүтээц", "Тусгай хэрэгсэл", "Логистик", "Агуулахын үйлчилгээ"],
+      en: ["Concrete & cement", "Steel structures", "Special tools", "Logistics", "Warehousing"],
+    },
+    image: projectIndustrial,
+  },
+  {
+    slug: "lifting-systems",
+    title: { mn: "Өргөх байгууламж", en: "Lifting Systems" },
+    summary: {
+      mn: "Кран, өргөгч төхөөрөмж, барилгын лифтийн угсралт, ашиглалт.",
+      en: "Cranes, hoists and construction lifts — installation and operation.",
+    },
+    features: {
+      mn: ["Цамхаг кран", "Гадна лифт", "Барилгын өргөгч", "Угсралт, буулгалт", "Ашиглалт, үйлчилгээ"],
+      en: ["Tower cranes", "External lifts", "Construction hoists", "Erection & dismantling", "Operation & service"],
+    },
+    image: amgalanAmenities,
+  },
+  {
+    slug: "geodesy",
+    title: { mn: "Геодезийн хэмжилт", en: "Geodetic Survey" },
+    summary: {
+      mn: "Газар хэмжилт, тэгшилгээний хяналт, барилгын тэнхлэгийн засвар.",
+      en: "Land survey, levelling control and structural axis verification.",
+    },
+    features: {
+      mn: ["Топографийн зураглал", "Тэнхлэг тавилт", "Тэгшилгээ", "Хяналтын хэмжилт", "BIM координатчлал"],
+      en: ["Topographic mapping", "Axis setting", "Levelling", "Monitoring", "BIM coordination"],
+    },
+    image: news2,
+  },
+  {
+    slug: "equipment-rental",
+    title: { mn: "Тоног төхөөрөмжийн засвар, түрээс", en: "Equipment Service & Rental" },
+    summary: {
+      mn: "Барилгын тоног төхөөрөмжийн засвар үйлчилгээ, түрээс.",
+      en: "Repair, maintenance and rental of construction equipment.",
+    },
+    features: {
+      mn: ["Засвар үйлчилгээ", "Урт богино хугацааны түрээс", "Операторын үйлчилгээ", "Сэлбэг хэрэгсэл", "Тээвэр"],
+      en: ["Repair & service", "Long & short-term rental", "Operator service", "Spare parts", "Transport"],
+    },
+    image: projectLuxury,
+  },
+  {
+    slug: "scaffolding",
+    title: { mn: "Барилгын шат угсрах, буулгах", en: "Scaffolding Erection & Dismantling" },
+    summary: {
+      mn: "Метал шат, тулгуур бүтээцийн угсралт болон буулгалтын мэргэжлийн үйлчилгээ.",
+      en: "Professional scaffolding erection, modification and dismantling services.",
+    },
+    features: {
+      mn: ["Зураг төсөл", "Угсралт", "Хяналтын баталгаажуулалт", "Аюулгүй ажиллагаа", "Буулгалт"],
+      en: ["Design", "Erection", "Inspection sign-off", "Safety control", "Dismantling"],
+    },
+    image: projectGov,
   },
 ];
 
@@ -248,22 +330,6 @@ export const testimonials: Testimonial[] = [
     author: "Oyu Tolgoi",
     org: { mn: "Шилдэг хангагч — 2014, 2016", en: "Best supplier — 2014, 2016" },
   },
-  {
-    quote: {
-      mn: "Орон сууцны хотхоны бүхий л үе шатанд хариуцлагатай, мэргэжлийн хандлагыг харуулсан.",
-      en: "Showed professionalism and accountability throughout every phase of the residential project.",
-    },
-    author: "AMGALAN RESIDENCE",
-    org: { mn: "Оршин суугчдын зөвлөл", en: "Residents council" },
-  },
-  {
-    quote: {
-      mn: "БХБЯ-ны шилдэг барилга угсралтын компани шалгарсан нь чанарын баталгаа.",
-      en: "Being named the Ministry's best construction company is a guarantee of quality.",
-    },
-    author: "БХБЯ",
-    org: { mn: "Барилга, хот байгуулалтын яам", en: "Ministry of Construction" },
-  },
 ];
 
 export interface JobPost {
@@ -278,8 +344,6 @@ export const jobs: JobPost[] = [
   { slug: "site-engineer", title: { mn: "Талбайн инженер", en: "Site Engineer" }, location: { mn: "Улаанбаатар", en: "Ulaanbaatar" }, type: { mn: "Бүтэн цаг", en: "Full-time" }, department: { mn: "Гүйцэтгэл", en: "Operations" } },
   { slug: "sales-consultant", title: { mn: "Борлуулалтын зөвлөх", en: "Sales Consultant" }, location: { mn: "Улаанбаатар", en: "Ulaanbaatar" }, type: { mn: "Бүтэн цаг", en: "Full-time" }, department: { mn: "Борлуулалт", en: "Sales" } },
   { slug: "architect", title: { mn: "Архитектор", en: "Architect" }, location: { mn: "Улаанбаатар", en: "Ulaanbaatar" }, type: { mn: "Бүтэн цаг", en: "Full-time" }, department: { mn: "Дизайн", en: "Design" } },
-  { slug: "qhse-officer", title: { mn: "ХАБЭА мэргэжилтэн", en: "QHSE Officer" }, location: { mn: "Оюу Толгой", en: "Oyu Tolgoi" }, type: { mn: "Бүтэн цаг", en: "Full-time" }, department: { mn: "ХАБЭА", en: "HSE" } },
-  { slug: "estimator", title: { mn: "Төсөвчин", en: "Quantity Surveyor" }, location: { mn: "Улаанбаатар", en: "Ulaanbaatar" }, type: { mn: "Бүтэн цаг", en: "Full-time" }, department: { mn: "Төсөв", en: "Commercial" } },
 ];
 
 export const partners = [

@@ -1,19 +1,22 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowDown, ArrowUpRight } from "lucide-react";
+import { ArrowRight, CheckCircle2, Phone } from "lucide-react";
 import { Navbar } from "@/components/site/Navbar";
 import { Footer } from "@/components/site/Footer";
 import { Reveal } from "@/components/site/Reveal";
 import { Counter } from "@/components/site/Counter";
+import { PartnersStrip } from "@/components/site/PartnersStrip";
 import { t, type Locale } from "@/lib/i18n";
-import { projects, services, news, stats, partners } from "@/lib/content";
-import heroImg from "@/assets/amgalan-residence-towers.jpg";
+import { services, stats } from "@/lib/content";
+import heroImg from "@/assets/hero-construction.jpg";
+import amgalanHero from "@/assets/amgalan-residence-hero.jpg";
+
 
 export const Route = createFileRoute("/$lang/")({
   head: ({ params }) => {
     const tr = t(params.lang as Locale);
     const title = params.lang === "mn"
-      ? `${tr.brand} — Үндэсний хэмжээний барилгын корпораци`
-      : `${tr.brand} — National construction corporation`;
+      ? `${tr.brand} — Барилга, архитектур, инженерчлэл`
+      : `${tr.brand} — Construction, Architecture, Engineering`;
     return {
       meta: [
         { title },
@@ -21,7 +24,6 @@ export const Route = createFileRoute("/$lang/")({
         { property: "og:title", content: title },
         { property: "og:description", content: tr.home.heroSub },
         { property: "og:type", content: "website" },
-        { property: "og:url", content: `/${params.lang}` },
       ],
       links: [{ rel: "canonical", href: `/${params.lang}` }],
     };
@@ -33,213 +35,155 @@ function HomePage() {
   const { lang } = Route.useParams();
   const l = lang as Locale;
   const tr = t(l);
-  const featured = projects.slice(0, 4);
-  const latest = news.slice(0, 3);
+  const previewServices = services.slice(0, 6);
 
   return (
     <>
-      <Navbar transparent />
+      <Navbar />
 
       {/* HERO */}
-      <section className="relative h-[100svh] min-h-[640px] w-full overflow-hidden bg-foreground text-white">
-        <img
-          src={heroImg}
-          alt=""
-          width={1920}
-          height={1280}
-          className="absolute inset-0 h-full w-full object-cover opacity-70"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/80" />
-        <div className="absolute inset-0 flex flex-col">
-          <div className="flex-1 container-x flex items-end pb-16 md:pb-28">
-            <div className="max-w-5xl">
-              <Reveal>
-                <p className="eyebrow text-accent">{tr.home.heroEyebrow}</p>
-              </Reveal>
-              <Reveal delay={0.1}>
-                <h1 className="display text-5xl md:text-7xl xl:text-[8.5rem] mt-6 text-white">
-                  {tr.home.heroTitle}
-                </h1>
-              </Reveal>
-              <Reveal delay={0.25}>
-                <p className="mt-8 text-base md:text-lg text-white/75 max-w-xl leading-relaxed">
-                  {tr.home.heroSub}
-                </p>
-              </Reveal>
-              <Reveal delay={0.35}>
-                <div className="mt-10 flex flex-wrap gap-3">
-                  <Link
-                    to="/$lang/projects"
-                    params={{ lang: l }}
-                    className="inline-flex items-center gap-2 px-6 py-3.5 bg-accent text-accent-foreground text-sm font-medium hover:translate-y-[-2px] transition-transform"
-                  >
-                    {tr.cta.viewProjects} <ArrowUpRight size={16} />
-                  </Link>
-                  <Link
-                    to="/$lang/contact"
-                    params={{ lang: l }}
-                    className="inline-flex items-center gap-2 px-6 py-3.5 border border-white/30 text-white text-sm font-medium hover:bg-white hover:text-foreground transition-colors"
-                  >
-                    {tr.cta.contactUs}
-                  </Link>
-                </div>
-              </Reveal>
+      <section className="relative min-h-[78vh] md:min-h-[86vh] flex items-center overflow-hidden bg-brand">
+        <img src={heroImg} alt="" className="absolute inset-0 w-full h-full object-cover opacity-35" />
+        <div className="absolute inset-0 bg-gradient-to-r from-brand/95 via-brand/80 to-brand/40" />
+        <div className="relative container-x py-20 md:py-28 text-white">
+          <Reveal>
+            <p className="eyebrow text-accent">{tr.home.heroEyebrow}</p>
+          </Reveal>
+          <Reveal delay={0.1}>
+            <h1 className="display text-4xl md:text-6xl xl:text-7xl mt-5 max-w-3xl text-white">
+              {tr.home.heroTitle}
+            </h1>
+          </Reveal>
+          <Reveal delay={0.2}>
+            <p className="mt-6 max-w-xl text-white/80 text-base md:text-lg leading-relaxed">
+              {tr.home.heroSub}
+            </p>
+          </Reveal>
+          <Reveal delay={0.3}>
+            <div className="mt-10 flex flex-wrap gap-3">
+              <Link
+                to="/$lang/projects" params={{ lang: l }}
+                className="inline-flex items-center gap-2 px-6 py-3.5 bg-accent text-white text-sm font-semibold rounded-md hover:brightness-110 transition"
+              >
+                {tr.cta.viewProjects} <ArrowRight size={16} />
+              </Link>
+              <Link
+                to="/$lang/contact" params={{ lang: l }}
+                className="inline-flex items-center gap-2 px-6 py-3.5 border border-white/40 text-white text-sm font-semibold rounded-md hover:bg-white/10 transition"
+              >
+                {tr.cta.contactUs}
+              </Link>
             </div>
-          </div>
-          <div className="container-x pb-8 flex items-center justify-between text-xs text-white/60">
-            <span>UB · Mongolia · est. 1998</span>
-            <span className="flex items-center gap-2 animate-pulse">
-              <ArrowDown size={14} /> scroll
-            </span>
-          </div>
+          </Reveal>
         </div>
       </section>
 
-      {/* INTRO */}
-      <section className="py-24 md:py-40 border-b border-hairline">
-        <div className="container-x grid grid-cols-1 md:grid-cols-12 gap-12">
-          <Reveal className="md:col-span-4">
-            <p className="eyebrow text-muted-foreground">{tr.home.introEyebrow}</p>
+      {/* SHORT ABOUT */}
+      <section className="py-20 md:py-28">
+        <div className="container-x grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-16 items-start">
+          <Reveal className="md:col-span-5">
+            <p className="eyebrow text-accent mb-3">{tr.home.introEyebrow}</p>
+            <h2 className="display text-3xl md:text-5xl text-brand">{tr.home.introTitle}</h2>
           </Reveal>
-          <div className="md:col-span-8">
-            <Reveal>
-              <h2 className="display text-3xl md:text-5xl xl:text-6xl">{tr.home.introTitle}</h2>
-            </Reveal>
+          <div className="md:col-span-7">
             <Reveal delay={0.1}>
-              <p className="mt-8 text-lg text-muted-foreground max-w-2xl leading-relaxed">
+              <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
                 {tr.home.introBody}
               </p>
-            </Reveal>
-          </div>
-        </div>
-      </section>
-
-      {/* SERVICES */}
-      <section className="py-24 md:py-32 bg-surface">
-        <div className="container-x">
-          <div className="flex items-end justify-between mb-14">
-            <Reveal>
-              <p className="eyebrow text-muted-foreground mb-3">{tr.home.services}</p>
-              <h2 className="display text-3xl md:text-5xl">{tr.services.title}</h2>
-            </Reveal>
-            <Link
-              to="/$lang/services"
-              params={{ lang: l }}
-              className="hidden md:inline-flex items-center gap-1 text-sm text-foreground/70 hover:text-foreground"
-            >
-              {tr.cta.readMore} <ArrowUpRight size={14} />
-            </Link>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 border-t border-l border-hairline">
-            {services.map((s, i) => (
-              <Reveal
-                key={s.slug}
-                delay={i * 0.05}
-                className="border-b border-r border-hairline p-8 md:p-10 bg-background hover:bg-surface transition-colors group"
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-10">
+                {stats.map((s, i) => (
+                  <div key={i} className="border-l-2 border-accent pl-4">
+                    <p className="display text-3xl md:text-4xl text-brand">
+                      <Counter value={s.value} suffix={s.suffix} />
+                    </p>
+                    <p className="mt-2 text-xs text-muted-foreground leading-snug">{s.label[l]}</p>
+                  </div>
+                ))}
+              </div>
+              <Link
+                to="/$lang/about" params={{ lang: l }}
+                className="inline-flex items-center gap-2 mt-10 text-accent font-semibold text-sm hover:gap-3 transition-all"
               >
-                <Link to="/$lang/services" params={{ lang: l }} className="block h-full">
-                  <p className="text-xs text-muted-foreground tabular-nums">
-                    0{i + 1}
-                  </p>
-                  <h3 className="mt-6 text-xl md:text-2xl font-medium tracking-tight">
-                    {s.title[l]}
-                  </h3>
-                  <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
-                    {s.summary[l]}
-                  </p>
-                  <span className="mt-8 inline-flex items-center text-xs text-foreground group-hover:gap-2 gap-1 transition-all">
-                    {tr.cta.readMore} →
-                  </span>
-                </Link>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* FEATURED PROJECTS */}
-      <section className="py-24 md:py-32">
-        <div className="container-x">
-          <div className="flex items-end justify-between mb-14">
-            <Reveal>
-              <p className="eyebrow text-muted-foreground mb-3">{tr.home.featured}</p>
-              <h2 className="display text-3xl md:text-5xl max-w-2xl">{tr.projects.title}</h2>
+                {tr.cta.readMore} <ArrowRight size={16} />
+              </Link>
             </Reveal>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10">
-            {featured.map((p, i) => (
-              <Reveal key={p.slug} delay={i * 0.08}>
-                <Link to="/$lang/projects" params={{ lang: l }} className="group block">
-                  <div className="aspect-[4/3] overflow-hidden bg-muted">
-                    <img
-                      src={p.image}
-                      alt={p.title[l]}
-                      loading="lazy"
-                      className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                    />
-                  </div>
-                  <div className="mt-5 flex items-start justify-between gap-4">
-                    <div>
-                      <p className="text-xs text-muted-foreground uppercase tracking-wider">
-                        {p.location[l]} · {p.year}
-                      </p>
-                      <h3 className="mt-2 text-xl md:text-2xl font-medium tracking-tight">
-                        {p.title[l]}
-                      </h3>
-                    </div>
-                    <ArrowUpRight size={20} className="shrink-0 mt-1 text-muted-foreground group-hover:text-foreground" />
-                  </div>
-                </Link>
-              </Reveal>
-            ))}
-          </div>
         </div>
       </section>
 
-      {/* STATS */}
-      <section className="py-24 md:py-32 bg-foreground text-background">
+      {/* FEATURED PROJECT — AMGALAN RESIDENCE */}
+      <section className="py-20 md:py-28 bg-surface">
         <div className="container-x">
           <Reveal>
-            <p className="eyebrow text-accent mb-3">{tr.home.stats}</p>
+            <p className="eyebrow text-accent mb-3">{tr.home.featured}</p>
           </Reveal>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-y-12 gap-x-8 mt-12">
-            {stats.map((s, i) => (
-              <Reveal key={i} delay={i * 0.08}>
-                <p className="display text-5xl md:text-7xl text-background">
-                  <Counter value={s.value} suffix={s.suffix} />
-                </p>
-                <p className="mt-4 text-sm text-background/60">{s.label[l]}</p>
-              </Reveal>
-            ))}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+            <Reveal>
+              <div className="aspect-[4/3] overflow-hidden rounded-xl shadow-lg">
+                <img src={amgalanHero} alt="AMGALAN RESIDENCE" className="w-full h-full object-cover" />
+              </div>
+            </Reveal>
+            <Reveal delay={0.1}>
+              <h3 className="display text-3xl md:text-5xl text-brand">AMGALAN RESIDENCE</h3>
+              <p className="mt-3 text-sm text-muted-foreground">
+                {l === "mn" ? "Богд уулын бэлд · Улаанбаатар" : "Foot of Bogd Mountain · Ulaanbaatar"}
+              </p>
+              <p className="mt-6 text-muted-foreground leading-relaxed">
+                {l === "mn"
+                  ? "5 блок, 15 давхар орон сууцны цогцолбор. Цутгамал төмөр бетон бүтэц, эрчим хүчний хэмнэлттэй технологи, нарны хавтан, 24 цагийн харуул хамгаалалт."
+                  : "Five-block, 15-storey residential complex. Cast-in-place reinforced concrete, energy-efficient systems, rooftop solar, and 24/7 security."}
+              </p>
+              <ul className="mt-6 space-y-2.5">
+                {(l === "mn"
+                  ? ["5 блок · 15 давхар", "46-70 м² 2-3 өрөө", "Далд болон ил зогсоол", "24/7 харуул хамгаалалт"]
+                  : ["5 blocks · 15 floors", "46-70 m² · 2-3 bedrooms", "Underground & surface parking", "24/7 security"]
+                ).map((f) => (
+                  <li key={f} className="flex items-center gap-2.5 text-sm">
+                    <CheckCircle2 size={16} className="text-accent shrink-0" /> {f}
+                  </li>
+                ))}
+              </ul>
+              <Link
+                to="/$lang/projects" params={{ lang: l }}
+                className="inline-flex items-center gap-2 mt-8 px-5 py-3 bg-brand text-white text-sm font-semibold rounded-md hover:bg-accent transition"
+              >
+                {tr.cta.readMore} <ArrowRight size={16} />
+              </Link>
+            </Reveal>
           </div>
         </div>
       </section>
 
-      {/* NEWS */}
-      <section className="py-24 md:py-32">
+      {/* SERVICES PREVIEW */}
+      <section className="py-20 md:py-28">
         <div className="container-x">
-          <div className="flex items-end justify-between mb-14">
+          <div className="flex items-end justify-between mb-10">
             <Reveal>
-              <p className="eyebrow text-muted-foreground mb-3">{tr.home.latestNews}</p>
-              <h2 className="display text-3xl md:text-5xl">{tr.news.title}</h2>
+              <p className="eyebrow text-accent mb-3">{tr.home.services}</p>
+              <h2 className="display text-3xl md:text-5xl text-brand">{tr.services.title}</h2>
             </Reveal>
             <Link
-              to="/$lang/news"
-              params={{ lang: l }}
-              className="hidden md:inline-flex items-center gap-1 text-sm text-foreground/70 hover:text-foreground"
+              to="/$lang/services" params={{ lang: l }}
+              className="hidden md:inline-flex items-center gap-1 text-sm text-accent font-semibold hover:gap-2 transition-all"
             >
-              {tr.cta.readMore} <ArrowUpRight size={14} />
+              {tr.cta.readMore} <ArrowRight size={14} />
             </Link>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {latest.map((n, i) => (
-              <Reveal key={n.slug} delay={i * 0.08}>
-                <Link to="/$lang/news" params={{ lang: l }} className="group block">
-                  <div className="aspect-[4/3] overflow-hidden bg-muted">
-                    <img src={n.image} alt={n.title[l]} loading="lazy" className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {previewServices.map((s, i) => (
+              <Reveal key={s.slug} delay={i * 0.05}>
+                <Link
+                  to="/$lang/services/$slug" params={{ lang: l, slug: s.slug }}
+                  className="group relative block aspect-[4/3] overflow-hidden rounded-xl shadow-sm hover:shadow-xl transition-shadow"
+                >
+                  <img src={s.image} alt={s.title[l]} className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-brand/95 via-brand/40 to-transparent" />
+                  <div className="absolute inset-x-0 bottom-0 p-5">
+                    <h3 className="text-white font-bold text-lg leading-tight">{s.title[l]}</h3>
+                    <div className="mt-2 flex items-center gap-2 text-accent text-xs font-semibold opacity-0 group-hover:opacity-100 transition">
+                      {tr.cta.readMore} <ArrowRight size={12} />
+                    </div>
                   </div>
-                  <p className="eyebrow text-muted-foreground mt-5">{n.category[l]} · {new Date(n.date).toLocaleDateString(l === "mn" ? "mn-MN" : "en-US", { year: "numeric", month: "short", day: "numeric" })}</p>
-                  <h3 className="mt-3 text-xl font-medium tracking-tight">{n.title[l]}</h3>
                 </Link>
               </Reveal>
             ))}
@@ -248,37 +192,40 @@ function HomePage() {
       </section>
 
       {/* PARTNERS */}
-      <section className="py-20 md:py-28">
+      <section className="py-20 md:py-24 bg-surface">
         <div className="container-x">
-          <p className="eyebrow text-muted-foreground text-center mb-10">{tr.home.partners}</p>
-          <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-center gap-x-10 gap-y-8 md:gap-x-14 md:gap-y-10">
-            {partners.map((p, i) => (
-              <div
-                key={p.name}
-                className="flex h-16 min-w-28 items-center justify-center"
+          <Reveal>
+            <p className="eyebrow text-accent text-center mb-3">{tr.home.partners}</p>
+            <h2 className="display text-2xl md:text-4xl text-brand text-center mb-12">
+              {l === "mn" ? "Бидний хамтран ажилладаг" : "Our trusted partners"}
+            </h2>
+          </Reveal>
+          <PartnersStrip />
+        </div>
+      </section>
+
+      {/* CONTACT CTA */}
+      <section className="relative py-20 md:py-28 bg-brand text-white overflow-hidden">
+        <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_30%_30%,white,transparent_60%)]" />
+        <div className="container-x relative grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+          <Reveal>
+            <p className="eyebrow text-accent mb-3">{tr.cta.contactUs}</p>
+            <h2 className="display text-3xl md:text-5xl">{tr.home.ctaTitle}</h2>
+            <p className="mt-4 text-white/75 max-w-md">{tr.home.ctaSub}</p>
+          </Reveal>
+          <Reveal delay={0.1}>
+            <div className="flex flex-col gap-4 md:items-end">
+              <a href="tel:+97695077733" className="inline-flex items-center gap-3 text-2xl md:text-3xl font-bold hover:text-accent transition">
+                <Phone size={22} className="text-accent" /> +976 9507-7733
+              </a>
+              <Link
+                to="/$lang/contact" params={{ lang: l }}
+                className="inline-flex items-center gap-2 px-6 py-3.5 bg-accent text-white text-sm font-semibold rounded-md hover:brightness-110 transition"
               >
-                <img
-                  src={p.logo}
-                  alt={p.name}
-                  loading="lazy"
-                  onError={(event) => {
-                    event.currentTarget.hidden = true;
-                    const fallback = event.currentTarget.nextElementSibling;
-                    if (fallback instanceof HTMLElement) fallback.hidden = false;
-                  }}
-                  className={`max-h-12 w-auto max-w-40 object-contain opacity-75 grayscale transition duration-300 hover:opacity-100 hover:grayscale-0 ${
-                    p.featured ? "max-h-14 max-w-48" : i % 4 === 0 ? "max-h-14" : ""
-                  }`}
-                />
-                <span
-                  hidden
-                  className="text-center text-base font-semibold tracking-tight text-foreground/35 md:text-lg"
-                >
-                  {p.name}
-                </span>
-              </div>
-            ))}
-          </div>
+                {tr.cta.getInTouch} <ArrowRight size={16} />
+              </Link>
+            </div>
+          </Reveal>
         </div>
       </section>
 
