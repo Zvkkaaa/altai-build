@@ -16,7 +16,6 @@ import { Route as LangIndexRouteImport } from './routes/$lang.index'
 import { Route as LangProjectsRouteImport } from './routes/$lang.projects'
 import { Route as LangNewsRouteImport } from './routes/$lang.news'
 import { Route as LangContactRouteImport } from './routes/$lang.contact'
-import { Route as LangCareersRouteImport } from './routes/$lang.careers'
 import { Route as LangAboutRouteImport } from './routes/$lang.about'
 import { Route as LangServicesIndexRouteImport } from './routes/$lang.services.index'
 import { Route as LangServicesSlugRouteImport } from './routes/$lang.services.$slug'
@@ -56,11 +55,6 @@ const LangContactRoute = LangContactRouteImport.update({
   path: '/contact',
   getParentRoute: () => LangRoute,
 } as any)
-const LangCareersRoute = LangCareersRouteImport.update({
-  id: '/careers',
-  path: '/careers',
-  getParentRoute: () => LangRoute,
-} as any)
 const LangAboutRoute = LangAboutRouteImport.update({
   id: '/about',
   path: '/about',
@@ -82,7 +76,6 @@ export interface FileRoutesByFullPath {
   '/$lang': typeof LangRouteWithChildren
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/$lang/about': typeof LangAboutRoute
-  '/$lang/careers': typeof LangCareersRoute
   '/$lang/contact': typeof LangContactRoute
   '/$lang/news': typeof LangNewsRoute
   '/$lang/projects': typeof LangProjectsRoute
@@ -94,7 +87,6 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/$lang/about': typeof LangAboutRoute
-  '/$lang/careers': typeof LangCareersRoute
   '/$lang/contact': typeof LangContactRoute
   '/$lang/news': typeof LangNewsRoute
   '/$lang/projects': typeof LangProjectsRoute
@@ -108,7 +100,6 @@ export interface FileRoutesById {
   '/$lang': typeof LangRouteWithChildren
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/$lang/about': typeof LangAboutRoute
-  '/$lang/careers': typeof LangCareersRoute
   '/$lang/contact': typeof LangContactRoute
   '/$lang/news': typeof LangNewsRoute
   '/$lang/projects': typeof LangProjectsRoute
@@ -123,7 +114,6 @@ export interface FileRouteTypes {
     | '/$lang'
     | '/sitemap.xml'
     | '/$lang/about'
-    | '/$lang/careers'
     | '/$lang/contact'
     | '/$lang/news'
     | '/$lang/projects'
@@ -135,7 +125,6 @@ export interface FileRouteTypes {
     | '/'
     | '/sitemap.xml'
     | '/$lang/about'
-    | '/$lang/careers'
     | '/$lang/contact'
     | '/$lang/news'
     | '/$lang/projects'
@@ -148,7 +137,6 @@ export interface FileRouteTypes {
     | '/$lang'
     | '/sitemap.xml'
     | '/$lang/about'
-    | '/$lang/careers'
     | '/$lang/contact'
     | '/$lang/news'
     | '/$lang/projects'
@@ -214,13 +202,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LangContactRouteImport
       parentRoute: typeof LangRoute
     }
-    '/$lang/careers': {
-      id: '/$lang/careers'
-      path: '/careers'
-      fullPath: '/$lang/careers'
-      preLoaderRoute: typeof LangCareersRouteImport
-      parentRoute: typeof LangRoute
-    }
     '/$lang/about': {
       id: '/$lang/about'
       path: '/about'
@@ -247,7 +228,6 @@ declare module '@tanstack/react-router' {
 
 interface LangRouteChildren {
   LangAboutRoute: typeof LangAboutRoute
-  LangCareersRoute: typeof LangCareersRoute
   LangContactRoute: typeof LangContactRoute
   LangNewsRoute: typeof LangNewsRoute
   LangProjectsRoute: typeof LangProjectsRoute
@@ -258,7 +238,6 @@ interface LangRouteChildren {
 
 const LangRouteChildren: LangRouteChildren = {
   LangAboutRoute: LangAboutRoute,
-  LangCareersRoute: LangCareersRoute,
   LangContactRoute: LangContactRoute,
   LangNewsRoute: LangNewsRoute,
   LangProjectsRoute: LangProjectsRoute,
