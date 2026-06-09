@@ -21,6 +21,8 @@ import { Route as LangGalleryRouteImport } from './routes/$lang.gallery'
 import { Route as LangContactRouteImport } from './routes/$lang.contact'
 import { Route as LangCareersRouteImport } from './routes/$lang.careers'
 import { Route as LangAboutRouteImport } from './routes/$lang.about'
+import { Route as LangServicesIndexRouteImport } from './routes/$lang.services.index'
+import { Route as LangServicesSlugRouteImport } from './routes/$lang.services.$slug'
 
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
@@ -82,6 +84,16 @@ const LangAboutRoute = LangAboutRouteImport.update({
   path: '/about',
   getParentRoute: () => LangRoute,
 } as any)
+const LangServicesIndexRoute = LangServicesIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => LangServicesRoute,
+} as any)
+const LangServicesSlugRoute = LangServicesSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => LangServicesRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -93,9 +105,11 @@ export interface FileRoutesByFullPath {
   '/$lang/gallery': typeof LangGalleryRoute
   '/$lang/news': typeof LangNewsRoute
   '/$lang/projects': typeof LangProjectsRoute
-  '/$lang/services': typeof LangServicesRoute
+  '/$lang/services': typeof LangServicesRouteWithChildren
   '/$lang/social-duty': typeof LangSocialDutyRoute
   '/$lang/': typeof LangIndexRoute
+  '/$lang/services/$slug': typeof LangServicesSlugRoute
+  '/$lang/services/': typeof LangServicesIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -106,9 +120,10 @@ export interface FileRoutesByTo {
   '/$lang/gallery': typeof LangGalleryRoute
   '/$lang/news': typeof LangNewsRoute
   '/$lang/projects': typeof LangProjectsRoute
-  '/$lang/services': typeof LangServicesRoute
   '/$lang/social-duty': typeof LangSocialDutyRoute
   '/$lang': typeof LangIndexRoute
+  '/$lang/services/$slug': typeof LangServicesSlugRoute
+  '/$lang/services': typeof LangServicesIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -121,9 +136,11 @@ export interface FileRoutesById {
   '/$lang/gallery': typeof LangGalleryRoute
   '/$lang/news': typeof LangNewsRoute
   '/$lang/projects': typeof LangProjectsRoute
-  '/$lang/services': typeof LangServicesRoute
+  '/$lang/services': typeof LangServicesRouteWithChildren
   '/$lang/social-duty': typeof LangSocialDutyRoute
   '/$lang/': typeof LangIndexRoute
+  '/$lang/services/$slug': typeof LangServicesSlugRoute
+  '/$lang/services/': typeof LangServicesIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -140,6 +157,8 @@ export interface FileRouteTypes {
     | '/$lang/services'
     | '/$lang/social-duty'
     | '/$lang/'
+    | '/$lang/services/$slug'
+    | '/$lang/services/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -150,9 +169,10 @@ export interface FileRouteTypes {
     | '/$lang/gallery'
     | '/$lang/news'
     | '/$lang/projects'
-    | '/$lang/services'
     | '/$lang/social-duty'
     | '/$lang'
+    | '/$lang/services/$slug'
+    | '/$lang/services'
   id:
     | '__root__'
     | '/'
@@ -167,6 +187,8 @@ export interface FileRouteTypes {
     | '/$lang/services'
     | '/$lang/social-duty'
     | '/$lang/'
+    | '/$lang/services/$slug'
+    | '/$lang/services/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -261,8 +283,36 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LangAboutRouteImport
       parentRoute: typeof LangRoute
     }
+    '/$lang/services/': {
+      id: '/$lang/services/'
+      path: '/'
+      fullPath: '/$lang/services/'
+      preLoaderRoute: typeof LangServicesIndexRouteImport
+      parentRoute: typeof LangServicesRoute
+    }
+    '/$lang/services/$slug': {
+      id: '/$lang/services/$slug'
+      path: '/$slug'
+      fullPath: '/$lang/services/$slug'
+      preLoaderRoute: typeof LangServicesSlugRouteImport
+      parentRoute: typeof LangServicesRoute
+    }
   }
 }
+
+interface LangServicesRouteChildren {
+  LangServicesSlugRoute: typeof LangServicesSlugRoute
+  LangServicesIndexRoute: typeof LangServicesIndexRoute
+}
+
+const LangServicesRouteChildren: LangServicesRouteChildren = {
+  LangServicesSlugRoute: LangServicesSlugRoute,
+  LangServicesIndexRoute: LangServicesIndexRoute,
+}
+
+const LangServicesRouteWithChildren = LangServicesRoute._addFileChildren(
+  LangServicesRouteChildren,
+)
 
 interface LangRouteChildren {
   LangAboutRoute: typeof LangAboutRoute
@@ -271,7 +321,7 @@ interface LangRouteChildren {
   LangGalleryRoute: typeof LangGalleryRoute
   LangNewsRoute: typeof LangNewsRoute
   LangProjectsRoute: typeof LangProjectsRoute
-  LangServicesRoute: typeof LangServicesRoute
+  LangServicesRoute: typeof LangServicesRouteWithChildren
   LangSocialDutyRoute: typeof LangSocialDutyRoute
   LangIndexRoute: typeof LangIndexRoute
 }
@@ -283,7 +333,7 @@ const LangRouteChildren: LangRouteChildren = {
   LangGalleryRoute: LangGalleryRoute,
   LangNewsRoute: LangNewsRoute,
   LangProjectsRoute: LangProjectsRoute,
-  LangServicesRoute: LangServicesRoute,
+  LangServicesRoute: LangServicesRouteWithChildren,
   LangSocialDutyRoute: LangSocialDutyRoute,
   LangIndexRoute: LangIndexRoute,
 }
