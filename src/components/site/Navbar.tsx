@@ -18,6 +18,7 @@ export function Navbar() {
     { to: `/${l}/services`, label: tr.nav.services },
     { to: `/${l}/projects`, label: tr.nav.projects },
     { to: `/${l}/news`, label: tr.nav.news },
+    { to: `/${l}/social-duty`, label: tr.nav.socialDuty },
     { to: `/${l}/contact`, label: tr.nav.contact },
   ];
 
@@ -29,13 +30,13 @@ export function Navbar() {
       {/* Orange top strip */}
       <div className="h-1 bg-accent w-full" />
       <div className="bg-white border-b border-hairline">
-        <div className="container-x flex items-center justify-between h-9 text-[12px] text-muted-foreground">
-          <div className="flex items-center gap-5">
+        <div className="container-x flex items-center justify-between h-8 text-[11px] text-muted-foreground">
+          <div className="flex items-center gap-4">
             <a href="mailto:info@hussenzug.mn" className="hidden sm:inline-flex items-center gap-1.5 hover:text-brand">
-              <Mail size={13} className="text-accent" /> info@hussenzug.mn
+              <Mail size={12} className="text-accent" /> info@hussenzug.mn
             </a>
             <a href="tel:+97695077733" className="inline-flex items-center gap-1.5 hover:text-brand">
-              <Phone size={13} className="text-accent" /> 9507-7733
+              <Phone size={12} className="text-accent" /> 9507-7733
             </a>
           </div>
           <LanguageSwitcher />
@@ -44,25 +45,25 @@ export function Navbar() {
 
       {/* Main nav */}
       <div className="bg-white border-b border-hairline shadow-[0_1px_0_rgba(0,0,0,0.02)]">
-        <div className="container-x flex items-center justify-between h-20">
-          <Link to={`/${l}`} className="flex items-center gap-3">
-            <img src={logo} alt={tr.brand} className="h-11 w-11 object-contain" />
+        <div className="container-x flex items-center justify-between h-16 lg:h-[4.25rem]">
+          <Link to={`/${l}`} className="flex items-center gap-2.5">
+            <img src={logo} alt={tr.brand} className="h-9 w-9 object-contain" />
             <div className="leading-tight">
-              <div className="font-bold text-brand text-[15px] tracking-tight">{tr.brand}</div>
-              <div className="text-[10px] uppercase tracking-[0.18em] text-muted-foreground hidden sm:block">
+              <div className="font-bold text-brand text-[14px] tracking-tight whitespace-nowrap">{tr.brand}</div>
+              <div className="text-[9px] uppercase tracking-[0.2em] text-muted-foreground hidden sm:block">
                 Construction · Engineering
               </div>
             </div>
           </Link>
 
-          <nav className="hidden lg:flex items-center gap-9 h-full">
+          <nav className="hidden lg:flex items-center gap-6 xl:gap-7 h-full">
             {links.map((lnk) => {
               const active = isActive(lnk.to, lnk.exact);
               return (
                 <Link
                   key={lnk.to}
                   to={lnk.to}
-                  className={`relative h-full flex items-center text-[14px] font-medium transition-colors ${
+                  className={`relative h-full flex items-center text-[13px] xl:text-[14px] font-medium transition-colors ${
                     active ? "text-accent" : "text-foreground/85 hover:text-brand"
                   }`}
                 >
@@ -78,7 +79,7 @@ export function Navbar() {
           <div className="hidden lg:block">
             <Link
               to={`/${l}/contact`}
-              className="inline-flex items-center px-5 py-2.5 bg-accent text-white text-sm font-semibold rounded-md hover:brightness-110 transition"
+              className="inline-flex items-center px-4 py-2 bg-accent text-white text-[13px] font-semibold rounded-md hover:brightness-110 transition"
             >
               {tr.cta.getInTouch}
             </Link>

@@ -13,6 +13,7 @@ import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as LangRouteImport } from './routes/$lang'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as LangIndexRouteImport } from './routes/$lang.index'
+import { Route as LangSocialDutyRouteImport } from './routes/$lang.social-duty'
 import { Route as LangProjectsRouteImport } from './routes/$lang.projects'
 import { Route as LangNewsRouteImport } from './routes/$lang.news'
 import { Route as LangContactRouteImport } from './routes/$lang.contact'
@@ -38,6 +39,11 @@ const IndexRoute = IndexRouteImport.update({
 const LangIndexRoute = LangIndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => LangRoute,
+} as any)
+const LangSocialDutyRoute = LangSocialDutyRouteImport.update({
+  id: '/social-duty',
+  path: '/social-duty',
   getParentRoute: () => LangRoute,
 } as any)
 const LangProjectsRoute = LangProjectsRouteImport.update({
@@ -79,6 +85,7 @@ export interface FileRoutesByFullPath {
   '/$lang/contact': typeof LangContactRoute
   '/$lang/news': typeof LangNewsRoute
   '/$lang/projects': typeof LangProjectsRoute
+  '/$lang/social-duty': typeof LangSocialDutyRoute
   '/$lang/': typeof LangIndexRoute
   '/$lang/services/$slug': typeof LangServicesSlugRoute
   '/$lang/services/': typeof LangServicesIndexRoute
@@ -90,6 +97,7 @@ export interface FileRoutesByTo {
   '/$lang/contact': typeof LangContactRoute
   '/$lang/news': typeof LangNewsRoute
   '/$lang/projects': typeof LangProjectsRoute
+  '/$lang/social-duty': typeof LangSocialDutyRoute
   '/$lang': typeof LangIndexRoute
   '/$lang/services/$slug': typeof LangServicesSlugRoute
   '/$lang/services': typeof LangServicesIndexRoute
@@ -103,6 +111,7 @@ export interface FileRoutesById {
   '/$lang/contact': typeof LangContactRoute
   '/$lang/news': typeof LangNewsRoute
   '/$lang/projects': typeof LangProjectsRoute
+  '/$lang/social-duty': typeof LangSocialDutyRoute
   '/$lang/': typeof LangIndexRoute
   '/$lang/services/$slug': typeof LangServicesSlugRoute
   '/$lang/services/': typeof LangServicesIndexRoute
@@ -117,6 +126,7 @@ export interface FileRouteTypes {
     | '/$lang/contact'
     | '/$lang/news'
     | '/$lang/projects'
+    | '/$lang/social-duty'
     | '/$lang/'
     | '/$lang/services/$slug'
     | '/$lang/services/'
@@ -128,6 +138,7 @@ export interface FileRouteTypes {
     | '/$lang/contact'
     | '/$lang/news'
     | '/$lang/projects'
+    | '/$lang/social-duty'
     | '/$lang'
     | '/$lang/services/$slug'
     | '/$lang/services'
@@ -140,6 +151,7 @@ export interface FileRouteTypes {
     | '/$lang/contact'
     | '/$lang/news'
     | '/$lang/projects'
+    | '/$lang/social-duty'
     | '/$lang/'
     | '/$lang/services/$slug'
     | '/$lang/services/'
@@ -179,6 +191,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/$lang/'
       preLoaderRoute: typeof LangIndexRouteImport
+      parentRoute: typeof LangRoute
+    }
+    '/$lang/social-duty': {
+      id: '/$lang/social-duty'
+      path: '/social-duty'
+      fullPath: '/$lang/social-duty'
+      preLoaderRoute: typeof LangSocialDutyRouteImport
       parentRoute: typeof LangRoute
     }
     '/$lang/projects': {
@@ -231,6 +250,7 @@ interface LangRouteChildren {
   LangContactRoute: typeof LangContactRoute
   LangNewsRoute: typeof LangNewsRoute
   LangProjectsRoute: typeof LangProjectsRoute
+  LangSocialDutyRoute: typeof LangSocialDutyRoute
   LangIndexRoute: typeof LangIndexRoute
   LangServicesSlugRoute: typeof LangServicesSlugRoute
   LangServicesIndexRoute: typeof LangServicesIndexRoute
@@ -241,6 +261,7 @@ const LangRouteChildren: LangRouteChildren = {
   LangContactRoute: LangContactRoute,
   LangNewsRoute: LangNewsRoute,
   LangProjectsRoute: LangProjectsRoute,
+  LangSocialDutyRoute: LangSocialDutyRoute,
   LangIndexRoute: LangIndexRoute,
   LangServicesSlugRoute: LangServicesSlugRoute,
   LangServicesIndexRoute: LangServicesIndexRoute,
@@ -256,3 +277,13 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}

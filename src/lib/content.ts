@@ -33,6 +33,7 @@ export interface Project {
   year: number;
   image: string;
   description: L<string>;
+  highlights?: L<string[]>;
 }
 
 export const amgalanGallery = [
@@ -50,6 +51,10 @@ export const projects: Project[] = [
       mn: "5 блок, 15 давхар орон сууцны цогцолбор. 100% цутгамал төмөр бетон бүтэц, эрчим хүчний хэмнэлттэй шийдэл, нарны хавтан, 24 цагийн харуул хамгаалалт, далд болон ил зогсоол.",
       en: "Five-block, 15-storey residential complex. 100% cast-in-place reinforced concrete, energy-efficient design, rooftop solar, 24/7 security, heated underground and surface parking.",
     },
+    highlights: {
+      mn: ["5 блок · 15 давхар", "46-70 м² 2-3 өрөө", "Далд болон ил зогсоол"],
+      en: ["5 blocks · 15 floors", "46-70 m² · 2-3 bedroom units", "Underground and surface parking"],
+    },
   },
   {
     slug: "oyu-tolgoi-shaft-2",
@@ -60,6 +65,10 @@ export const projects: Project[] = [
     description: {
       mn: "Уурхайн агаар халаах байгууламж, наран байрны түр оффис, дэд бүтцийн ажлууд (НБИК ХХК хамтран).",
       en: "Mine air-heating facility, Naran site office, and supporting infrastructure (delivered with NBIK LLC).",
+    },
+    highlights: {
+      mn: ["Уурхайн дэд бүтэц", "Хамтарсан гүйцэтгэл", "Аюулгүй ажиллагааны хатуу стандарт"],
+      en: ["Mining infrastructure", "Joint delivery", "Strict safety standards"],
     },
   },
   {
@@ -72,6 +81,10 @@ export const projects: Project[] = [
       mn: "Олон улсын 5 одтой зочид буудлын барилга угсралтын ажилд оролцсон.",
       en: "Contributed to construction works on the international 5-star hotel complex.",
     },
+    highlights: {
+      mn: ["5 одтой зочид буудал", "Тансаг зэрэглэлийн ажлууд", "Дотоод болон гадна гүйцэтгэл"],
+      en: ["5-star hotel", "Luxury-grade works", "Interior and exterior delivery"],
+    },
   },
   {
     slug: "new-ulaanbaatar-airport",
@@ -82,6 +95,10 @@ export const projects: Project[] = [
     description: {
       mn: "Шинэ нисэх буудлын дэд бүтэц, барилга угсралтын ажлууд.",
       en: "Infrastructure and construction works for the new international airport.",
+    },
+    highlights: {
+      mn: ["Шинэ нисэх буудлын дэд бүтэц", "Тээврийн томоохон төсөл", "Нарийн төлөвлөлт"],
+      en: ["New airport infrastructure", "Major transport project", "Detailed planning"],
     },
   },
   {
@@ -94,6 +111,10 @@ export const projects: Project[] = [
       mn: "Уул уурхайн сургалтын төвийн иж бүрэн барилга.",
       en: "Full-scope construction of the mining training centre.",
     },
+    highlights: {
+      mn: ["Сургалтын төв", "Бүрэн гүйцэтгэл", "Тоноглолд нийцсэн шийдэл"],
+      en: ["Training centre", "Full-scope delivery", "Fit-for-purpose solution"],
+    },
   },
   {
     slug: "manlai-sports-hall",
@@ -104,6 +125,10 @@ export const projects: Project[] = [
     description: {
       mn: "Орон нутгийн спорт танхимын төсөл.",
       en: "Regional sports hall delivered for the local administration.",
+    },
+    highlights: {
+      mn: ["Орон нутгийн төсөл", "Олон нийтийн ашиглалт", "Дотор засал, гүйцэтгэл"],
+      en: ["Regional project", "Public use facility", "Interior and finishing works"],
     },
   },
 ];
@@ -340,35 +365,43 @@ export interface JobPost {
   department: L<string>;
 }
 
+export interface Partner {
+  name: string;
+  logo?: string;
+  featured?: boolean;
+}
+
 export const jobs: JobPost[] = [
   { slug: "site-engineer", title: { mn: "Талбайн инженер", en: "Site Engineer" }, location: { mn: "Улаанбаатар", en: "Ulaanbaatar" }, type: { mn: "Бүтэн цаг", en: "Full-time" }, department: { mn: "Гүйцэтгэл", en: "Operations" } },
   { slug: "sales-consultant", title: { mn: "Борлуулалтын зөвлөх", en: "Sales Consultant" }, location: { mn: "Улаанбаатар", en: "Ulaanbaatar" }, type: { mn: "Бүтэн цаг", en: "Full-time" }, department: { mn: "Борлуулалт", en: "Sales" } },
   { slug: "architect", title: { mn: "Архитектор", en: "Architect" }, location: { mn: "Улаанбаатар", en: "Ulaanbaatar" }, type: { mn: "Бүтэн цаг", en: "Full-time" }, department: { mn: "Дизайн", en: "Design" } },
 ];
 
-export const partners = [
-  { name: "NBIK", logo: "/partner-logos/nbik.png", featured: true },
-  { name: "Oyu Tolgoi", logo: "/partner-logos/oyu-tolgoi.png" },
-  { name: "MMSE", logo: "/partner-logos/mmse.png" },
-  { name: "Jacobs", logo: "/partner-logos/jacobs.png" },
-  { name: "Bayan Airag", logo: "/partner-logos/bayan-airag.png" },
-  { name: "Хасу Мегаватт", logo: "/partner-logos/khasu-megawatt.png" },
-  { name: "Golomt Bank", logo: "/partner-logos/golomt-bank.png" },
-  { name: "HLB", logo: "/partner-logos/hlb.png" },
-  { name: "Мандал Даатгал", logo: "/partner-logos/mandal-daatgal.png" },
-  { name: "Samsung", logo: "/partner-logos/samsung.png" },
-  { name: "Monadelphous", logo: "/partner-logos/monadelphous.png" },
-  { name: "LG Hausys", logo: "/partner-logos/lg-hausys.png" },
-  { name: "Steppe Arena", logo: "/partner-logos/steppe-arena.png" },
-  { name: "Wave", logo: "/partner-logos/wave.png" },
-  { name: "Shangri-La", logo: "/partner-logos/shangri-la.png" },
-  { name: "Dayan Contract Mining", logo: "/partner-logos/dayan-contract-mining.png" },
-  { name: "Worley", logo: "/partner-logos/worley.png" },
-  { name: "Wagner CAT", logo: "/partner-logos/wagner-cat.png" },
-  { name: "Global Auto Rental", logo: "/partner-logos/global-auto-rental.png" },
-  { name: "Alimak", logo: "/partner-logos/alimak.png" },
-  { name: "Huawei", logo: "/partner-logos/huawei.png" },
-  { name: "MSM", logo: "/partner-logos/msm.png" },
+export const partners: Partner[] = [
+  { name: "HLB", logo: "/partner-logos/hlb.svg", featured: true },
+  { name: "MMSE", logo: "/partner-logos/mmse.svg", featured: true },
+  { name: "Weidmüller", logo: "/partner-logos/weidmuller.svg", featured: true },
+  { name: "Kardex", logo: "/partner-logos/kardex.svg", featured: true },
+  { name: "Bayan Airag", featured: true },
+  { name: "NBIK" },
+  { name: "Oyu Tolgoi" },
+  { name: "Jacobs" },
+  { name: "Хасу Мегаватт" },
+  { name: "Golomt Bank" },
+  { name: "Мандал Даатгал" },
+  { name: "Samsung" },
+  { name: "Monadelphous" },
+  { name: "LG Hausys" },
+  { name: "Steppe Arena" },
+  { name: "Wave" },
+  { name: "Shangri-La" },
+  { name: "Dayan Contract Mining" },
+  { name: "Worley" },
+  { name: "Wagner CAT" },
+  { name: "Global Auto Rental" },
+  { name: "Alimak" },
+  { name: "Huawei" },
+  { name: "MSM" },
 ];
 
 export const stats = [

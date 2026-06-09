@@ -192,12 +192,15 @@ function HomePage() {
       </section>
 
       {/* PARTNERS */}
-      <section className="py-20 md:py-24 bg-surface">
+      <section className="relative overflow-hidden py-20 md:py-24 bg-surface">
+        <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent/40 to-transparent" />
+        <div className="absolute -left-24 top-10 h-48 w-48 rounded-full bg-accent/8 blur-3xl" />
+        <div className="absolute -right-24 bottom-0 h-56 w-56 rounded-full bg-brand/8 blur-3xl" />
         <div className="container-x">
           <Reveal>
             <p className="eyebrow text-accent text-center mb-3">{tr.home.partners}</p>
-            <h2 className="display text-2xl md:text-4xl text-brand text-center mb-12">
-              {l === "mn" ? "Бидний хамтран ажилладаг" : "Our trusted partners"}
+            <h2 className="display text-2xl md:text-4xl text-brand text-center mb-4">
+              {tr.home.partners}
             </h2>
           </Reveal>
           <PartnersStrip />

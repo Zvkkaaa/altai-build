@@ -38,6 +38,7 @@ export function Footer() {
                 ["/services", tr.nav.services],
                 ["/projects", tr.nav.projects],
                 ["/news", tr.nav.news],
+                ["/social-duty", tr.nav.socialDuty],
                 ["/contact", tr.nav.contact],
               ].map(([href, label]) => (
                 <li key={href}>
@@ -71,4 +72,3 @@ export function Footer() {
     </footer>
   );
 }
-

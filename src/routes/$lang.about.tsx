@@ -5,6 +5,9 @@ import { PageHero } from "@/components/site/PageHero";
 import { Reveal } from "@/components/site/Reveal";
 import { t, type Locale } from "@/lib/i18n";
 import aboutImg from "@/assets/about-cover.jpg";
+import heroConstruction from "@/assets/hero-construction.jpg";
+import projectGov from "@/assets/project-government.jpg";
+import projectResidential from "@/assets/project-residential.jpg";
 
 export const Route = createFileRoute("/$lang/about")({
   head: ({ params }) => {
@@ -43,11 +46,90 @@ function AboutPage() {
       <Navbar />
       <PageHero eyebrow={tr.nav.about} title={tr.about.hero} sub={tr.about.sub} />
 
+      {/* Company profile */}
+      <section className="py-16 md:py-24">
+        <div className="container-x grid gap-12 lg:grid-cols-12 lg:items-start">
+          <div className="lg:col-span-5">
+            <Reveal>
+              <p className="eyebrow text-accent mb-4">{l === "mn" ? "Компанийн танилцуулга" : "Company profile"}</p>
+              <h2 className="display text-3xl md:text-5xl text-brand max-w-lg">
+                {l === "mn"
+                  ? "Бидний тухай хэсэг нь товч, илүү цэвэр, ойлгомжтой харагдана."
+                  : "A cleaner, more concise introduction that reads immediately."}
+              </h2>
+            </Reveal>
+            <Reveal delay={0.08}>
+              <p className="mt-6 text-base md:text-lg text-muted-foreground leading-relaxed max-w-xl">
+                {tr.about.sub}
+              </p>
+            </Reveal>
+            <Reveal delay={0.16}>
+              <div className="mt-10 grid gap-4">
+                {[
+                  l === "mn" ? "Орон сууц, иргэний барилга" : "Residential and civil construction",
+                  l === "mn" ? "Төслийн удирдлага ба хяналт" : "Project management and supervision",
+                  l === "mn" ? "Хамтрагч НБИК ХХК-тай хамтын ажиллагаа" : "Partnership with NBIK LLC",
+                ].map((item) => (
+                  <div key={item} className="rounded-2xl border border-hairline bg-surface px-5 py-4 text-sm md:text-base text-foreground/85">
+                    {item}
+                  </div>
+                ))}
+              </div>
+            </Reveal>
+          </div>
+
+          <div className="lg:col-span-7">
+            <div className="grid gap-4 sm:grid-cols-2">
+              <Reveal className="sm:row-span-2">
+                <div className="group h-full overflow-hidden rounded-3xl border border-hairline bg-surface shadow-sm">
+                  <img
+                    src={aboutImg}
+                    alt=""
+                    loading="lazy"
+                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                </div>
+              </Reveal>
+              <Reveal delay={0.08}>
+                <div className="group overflow-hidden rounded-3xl border border-hairline bg-surface shadow-sm">
+                  <img
+                    src={heroConstruction}
+                    alt=""
+                    loading="lazy"
+                    className="aspect-[4/3] w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                </div>
+              </Reveal>
+              <Reveal delay={0.16}>
+                <div className="group overflow-hidden rounded-3xl border border-hairline bg-surface shadow-sm">
+                  <img
+                    src={projectGov}
+                    alt=""
+                    loading="lazy"
+                    className="aspect-[4/3] w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                </div>
+              </Reveal>
+              <Reveal delay={0.24}>
+                <div className="group overflow-hidden rounded-3xl border border-hairline bg-surface shadow-sm">
+                  <img
+                    src={projectResidential}
+                    alt=""
+                    loading="lazy"
+                    className="aspect-[4/3] w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                </div>
+              </Reveal>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Video */}
-      <section className="py-16 md:py-24 border-b border-hairline">
+      <section className="py-16 md:py-24 border-y border-hairline bg-surface">
         <div className="container-x">
           <p className="eyebrow text-muted-foreground mb-6">{tr.about.video}</p>
-          <div className="relative aspect-video w-full overflow-hidden bg-foreground">
+          <div className="relative aspect-video w-full overflow-hidden rounded-3xl bg-foreground shadow-lg">
             <iframe
               src="https://www.youtube.com/embed/QGQRm2wlIpU"
               title={tr.about.video}
@@ -55,25 +137,6 @@ function AboutPage() {
               allowFullScreen
               className="absolute inset-0 h-full w-full"
             />
-          </div>
-        </div>
-      </section>
-
-
-      <section className="py-24 md:py-32">
-        <div className="container-x grid md:grid-cols-12 gap-12">
-          <Reveal className="md:col-span-7">
-            <img src={aboutImg} alt="" loading="lazy" className="w-full aspect-[4/3] object-cover" />
-          </Reveal>
-          <div className="md:col-span-5 md:pt-12">
-            <Reveal>
-              <p className="eyebrow text-muted-foreground">{tr.about.vision}</p>
-              <h2 className="display text-3xl md:text-4xl mt-4">{tr.about.visionBody}</h2>
-            </Reveal>
-            <Reveal delay={0.1} className="mt-12 pt-12 border-t border-hairline">
-              <p className="eyebrow text-muted-foreground">{tr.about.mission}</p>
-              <p className="mt-4 text-lg text-muted-foreground leading-relaxed">{tr.about.missionBody}</p>
-            </Reveal>
           </div>
         </div>
       </section>
