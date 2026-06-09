@@ -7,8 +7,9 @@ import { Counter } from "@/components/site/Counter";
 import { PartnersStrip } from "@/components/site/PartnersStrip";
 import { t, type Locale } from "@/lib/i18n";
 import { services, stats } from "@/lib/content";
-import heroImg from "@/assets/amgalan-residence-towers.jpg";
+import heroImg from "@/assets/hero-construction.jpg";
 import amgalanHero from "@/assets/amgalan-residence-hero.jpg";
+
 
 export const Route = createFileRoute("/$lang/")({
   head: ({ params }) => {
